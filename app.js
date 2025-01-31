@@ -1,7 +1,9 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 dotenv.config();
+
+import connectDB from './controllers/configDB.js';
+connectDB();
 
 const app = express();
 const PORT = process.env.port || 3000;
