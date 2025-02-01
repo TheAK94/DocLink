@@ -1,0 +1,30 @@
+.navbar {
+    min-height: 80px;
+    height: auto;
+}
+
+#emergency-label {
+    font-size: 10px;
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+
+.mtop-nav-fix {
+    margin-top: 20px;
+}
+
+.btn-hover-nav:hover {
+    background: linear-gradient(to right, #00dce8, #01787f);
+    color: rgb(255, 255, 0);
+}
+
+.login-btn {
+    background-color: #0087ad;
+    color: white;
+}
+
+.login-btn:hover {
+    background: linear-gradient(to right, #00c8ff, #007C9D);
+    color: white;
+    border: 1px solid #007C9D;
+}
