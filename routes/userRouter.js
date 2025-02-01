@@ -5,6 +5,7 @@ const router = express.Router();
 import { handlerUserLogin, handlerUserSignup } from '../controllers/userController.js';
 import checkAuth from '../middlewares/checkAuth.js';
 import User from '../models/userModel.js';
+import Doctor from '../models/doctorModel.js';
 
 router.route('/login')
 .get((req,res)=>{
@@ -21,7 +22,9 @@ router.route('/signup')
 
 router.route('/dashboard')
 .get(checkAuth, async (req,res)=>{
-    res.render('userDashboard', {user: req.user});
+    const allDoctors = await Doctor.find({});
+    const myuser = await User.findOne({_id : req.user._id});
+    res.render('userDashboard', {user: myuser, allDoctors: allDoctors});
 });
 
 router.route('/logout')
