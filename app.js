@@ -4,6 +4,7 @@ dotenv.config();
 import cookieParser from 'cookie-parser';
 
 import userRoute from './routes/userRouter.js';
+import doctorRoute from './routes/doctorRoute.js';
 import connectDB from './controllers/configDB.js';
 connectDB();
 
@@ -23,6 +24,8 @@ app.get('/', async (req, res)=>{
 })
 
 app.use('/user',userRoute);
+app.use('/doctor',doctorRoute);
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is running at http://localhost:${PORT}/`);

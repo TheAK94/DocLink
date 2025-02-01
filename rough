@@ -1,5 +1,5 @@
 
-//second part of user dashboard
+<!-- //second part of user dashboard -->
 <% allDoctors.forEach(doctor => { %>
     <%= doctor.firstName %>
     <%= doctor.lastName %>
@@ -16,7 +16,7 @@
    <% }) %>
 
     
-    //user dashboard last part
+    <!-- //user dashboard last part -->
     <h2>Booked Appointments</h2>
     <% if (!user.bookedAppointments || user.bookedAppointments.length === 0) { %>
         <h4>No appointments booked</h4>
@@ -26,3 +26,7 @@
             <h4>Doctor: <%= element.doctor %></h4>
         <% }) %>
     <% } %>
+
+
+    //dashboard code route
+    
