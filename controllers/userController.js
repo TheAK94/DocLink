@@ -1,5 +1,6 @@
 import User from '../models/userModel.js';
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken"
+
 
 async function handlerUserLogin(req, res) {
     const { email, password } = req.body;
@@ -21,6 +22,20 @@ async function handlerUserLogin(req, res) {
     return res.redirect('/user/dashboard');
 }
 
+async function handlerUserSignup(req, res) {
+    const { firstName, lastName, email, password } = req.body;
+    try {
+        const event = await User.create({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+        });
+        console.log("created AN USER");
+        res.redirect('/user/login');
+    } catch (err) {
+        console.log("ERROR CREATING AN USER", err);
+    }
+}
 
-
-export { handlerUserLogin };
+export { handlerUserLogin, handlerUserSignup };

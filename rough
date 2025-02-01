@@ -1,0 +1,28 @@
+
+//second part of user dashboard
+<% allDoctors.forEach(doctor => { %>
+    <%= doctor.firstName %>
+    <%= doctor.lastName %>
+    <%= doctor.specialization %>
+
+
+    <% if (doctor.openSlots && doctor.openSlots.length > 0) { %>
+       <% doctor.openSlots.forEach((x,index)=>{ %>
+           <h4>Slot time: <%= x %></h4> <form action="/user/book-slot/<%= doctor.id %>/<%= index %>" method="get"><button type="submit">Book this slot </button></form>
+       <% }) %>
+   <% } else { %>
+       <h4>No slots available</h4>
+   <% } %>
+   <% }) %>
+
+    
+    //user dashboard last part
+    <h2>Booked Appointments</h2>
+    <% if (!user.bookedAppointments || user.bookedAppointments.length === 0) { %>
+        <h4>No appointments booked</h4>
+    <% } else { %>
+        <% user.bookedAppointments.forEach(element => { %>
+            <h4>Slot time: <%= element.slot %></h4>
+            <h4>Doctor: <%= element.doctor %></h4>
+        <% }) %>
+    <% } %>
