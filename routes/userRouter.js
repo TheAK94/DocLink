@@ -3,7 +3,8 @@ const app = express();
 const router = express.Router();
 
 import { handlerUserLogin, handlerUserSignup } from '../controllers/userController.js';
-
+import checkAuth from '../middlewares/checkAuth.js';
+import User from '../models/userModel.js';
 
 router.route('/login')
 .get((req,res)=>{
@@ -19,12 +20,12 @@ router.route('/signup')
 
 
 router.route('/dashboard')
-.get( async (req,res)=>{
-    res.render('dashboard');
+.get(checkAuth, async (req,res)=>{
+    res.render('userDashboard', {user: req.user});
 });
 
 router.route('/logout')
-.get((req,res)=>{
+.get(checkAuth, (req,res)=>{
     res.clearCookie('userToken');
     return res.redirect('/user/login');
 });
