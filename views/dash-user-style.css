@@ -1,0 +1,149 @@
+.navbar {
+    min-height: 80px;
+    height: auto;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+}
+
+    /* plus sign */
+.sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign svg {
+    width: 17px;
+}
+
+.sign svg path {
+    fill: white;
+}
+    /* text */
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+    /* hover effect on button width */
+.Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+    /* hover effect button's text */
+.Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+    /* button click effect*/
+.Btn:active {
+    transform: translate(2px ,2px);
+}
+
+.nav-btn:hover {
+    background-color: #A1E3F9;
+}
+
+.nav-btn:active {
+    background-color: #55b9db !important;
+    border: 1px solid #55b9db !important;
+}
+
+.fixed-bottom-right {
+    height: 50px;
+    width: auto;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    background-color: rgb(255, 156, 42);
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+}
+
+.fixed-bottom-right:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    color: #0087ad;
+    background-color: rgb(255, 156, 42);
+}
+.fixed-bottom-right:active {
+    color: #0087ad !important;
+    background-color: rgb(255, 156, 42) !important;
+}
+
+@media (max-width: 768px) {
+    .fixed-bottom {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        border-radius: 0;
+        color: white;
+        background-color: rgb(255, 156, 42);
+    }
+    .fixed-bottom:hover {
+        color: #0087ad;
+        background-color: rgb(255, 156, 42);
+    }
+    .fixed-bottom:active {
+        color: #0087ad !important;
+        background-color: rgb(255, 156, 42) !important;
+    }
+}
+
+nav {
+    background: #f0f0f0;
+    padding: 10px;
+}
+nav button {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Hide all sections by default */
+.section {
+    display: none;
+}
+  
+  /* Show only the active section */
+.section.active {
+    display: block;
+}
+
+#profilePic {
+    height: 200px;
+    width: 200px;
+}
