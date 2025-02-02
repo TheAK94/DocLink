@@ -66,3 +66,82 @@
 .modal-footer a:hover {
     text-decoration: underline;
 }
+
+.fixed-bottom-right {
+    height: 50px;
+    width: auto;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    background-color: rgb(255, 156, 42);
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+}
+
+.fixed-bottom-right:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    color: #0087ad;
+    background-color: rgb(255, 156, 42);
+}
+.fixed-bottom-right:active {
+    color: #0087ad !important;
+    background-color: rgb(255, 156, 42) !important;
+}
+
+@media (max-width: 768px) {
+    .fixed-bottom {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0;
+        border-radius: 0;
+        color: white;
+        background-color: rgb(255, 156, 42);
+    }
+    .fixed-bottom:hover {
+        color: #0087ad;
+        background-color: rgb(255, 156, 42);
+    }
+    .fixed-bottom:active {
+        color: #0087ad !important;
+        background-color: rgb(255, 156, 42) !important;
+    }
+}
+
+#goTo .col .card {
+    min-height: 150px;
+    height: auto;
+    max-width: 150px;
+    width: auto;
+    border: none;
+    border-radius: 20%;
+    box-shadow: 6px 6px 70px rgb(16 40 81 / 23%);
+}
+
+#goTo .col .card:hover {
+    cursor: pointer;
+    border-color: #01C9C9;
+    background: linear-gradient(281deg, #007C9D, #01C9C9);
+}
+
+.responsive-text {
+    font-size: 0.9rem; /* Base font-size for extra small devices */
+    font-weight: 400;
+}
+
+@media (min-width: 576px) { /* Small devices */
+    .responsive-text {
+        font-size: 1.1rem;
+    }
+}
+
+.role-selec {
+    border-radius: 10%;
+}
+.role-selec:active {
+    border: 2px solid #0087ad;
+}
+
