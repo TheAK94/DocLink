@@ -7,12 +7,12 @@ async function checkAuth(req, res, next){
     
     if(!token){
         console.log('no token found');
-        return res.redirect('/user/login');
+        return res.redirect('/');
     }
     const payload = await jwt.verify(token, "secretKey");
     if(!payload){
         // console.log('wrong token');
-        return res.redirect('/user/login');
+        return res.redirect('/');
     }
     req.user = payload.user;
     next();

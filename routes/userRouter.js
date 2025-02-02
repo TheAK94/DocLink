@@ -8,15 +8,9 @@ import User from '../models/userModel.js';
 import Doctor from '../models/doctorModel.js';
 
 router.route('/login')
-.get((req,res)=>{
-    res.render('login');
-}) 
 .post(handlerUserLogin);
 
 router.route('/signup')
-.get((req,res)=>{
-    res.render('signup');
-}) 
 .post(handlerUserSignup);
 
 
@@ -30,7 +24,7 @@ router.route('/dashboard')
 router.route('/logout')
 .get(checkAuth, (req,res)=>{
     res.clearCookie('userToken');
-    return res.redirect('/user/login');
+    return res.redirect('/');
 });
 
 

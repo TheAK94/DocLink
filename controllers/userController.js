@@ -32,7 +32,7 @@ async function handlerUserSignup(req, res) {
             password: password,
         });
         console.log("created AN USER");
-        res.redirect('/user/login');
+        res.redirect('/');
     } catch (err) {
         console.log("ERROR CREATING AN USER", err);
     }
