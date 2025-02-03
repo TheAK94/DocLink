@@ -34,8 +34,6 @@ router.route('/profile/:id')
     }
 })
 
-
-
 //dashboard
 router.route('/dashboard')
 .get(checkAuthDoctor, async (req,res)=>{
@@ -81,4 +79,24 @@ router.route('/logout')
     res.clearCookie('doctorToken');
     return res.redirect('/');
 });
+
+router.post('/remove-slot/:index', checkAuthDoctor, async (req,res)=>{
+    try{
+        const {index} = req.params;
+        const currentDoctor = await Doctor.findOne({id:req.doctor.id});
+        if(!currentDoctor){
+            console.log("You are not logged in");
+            return res.status(400).send("You are not logged in");
+        }
+        currentDoctor.openSlots.splice(index, 1);
+        await currentDoctor.save();
+        console.log("Time slot removed successfully");
+        return res.redirect('/doctor/dashboard');
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).send("An error occurred while processing your request");
+    }
+});
+
 export default router;
