@@ -1,0 +1,172 @@
+.navbar {
+    min-height: 80px;
+    height: auto;
+}
+
+.container-nav-to-home {
+    height: 80px;
+    width: 100%;
+    background-color: #e2f4f8;
+    padding: 24px 22px;
+}
+
+.bi-caret-right-fill {
+    font-size: 10px;
+}
+
+.nav-to-home {
+    width: 160px;
+    height: 32px;
+    border-radius: 25px;
+    background-color: white;
+    padding-left: 16px;
+}
+
+#title-span {
+    padding-top: 2px;
+    color: #0a5060;
+    font-size: small;
+    font-weight: 500;
+}
+
+.container-heading {
+    height: 130px;
+    width: 100%;
+    background-color: #e2f4f8;
+}
+
+.input-group {
+    padding-left: 60px;
+    padding-right: 40px;
+    margin-top: 40px;
+    max-width: 1000px;
+}
+
+#search-addon {
+    height: 50px;
+    width: 50px;
+    background-color: #0087ad;
+    border-radius: 50%;
+    margin-left: -50px;
+    z-index: 2;
+}
+
+#search-addon:hover {
+    transition: 0.3s;
+    background-color: orange;
+    cursor: pointer;
+}
+
+#searchInput {
+    height: 50px;
+}
+
+#searchInput:focus {
+    z-index: 1;
+}
+
+
+.filter-sidebar {
+    min-width: 250px;
+    width: auto;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.doctor-list.card {
+    width: 100%;
+}
+
+#profilePic {
+    height: 180px;
+    width: 180px;
+}
+
+#days {
+    display: flex;
+    gap: 8px; /* Adjust space between buttons */
+    flex-wrap: nowrap; /* Ensure all buttons are in one row */
+    overflow-x: auto; /* Enables scrolling if too many buttons */
+}
+
+#days button {
+    width: 40px;  /* Fixed width */
+    height: 50px; /* Fixed height */
+    text-align: center;
+    padding: 5px 0; /* Adjust padding */
+    line-height: 1.2;
+    border-radius: 10px; /* Rounded corners */
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#days button span {
+    font-size: 10px; /* Adjust font size for better fit */
+    font-weight: 600;
+    display: block; /* Ensures text stays inside the button */
+}
+
+#card-wid {
+    width: 350px !important;
+}
+
+/* Time Slot Container */
+#timeContainer {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    width: 250px; /* Adjust as needed */
+    display: flex;
+}
+
+#timeSlots {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+#timeSlots button {
+    min-width: 30px; /* Fixed size */
+    height: 30px;
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scroll Button Styling */
+#scrollLeft, #scrollRight, #scrollTimeLeft, #scrollTimeRight {
+    border: none;
+    background: white;
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Hide Scrollbar for WebKit browsers (Chrome, Safari) */
+#timeContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide Scrollbar for Firefox */
+#timeContainer {
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+.appoint-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.exp-text {
+    font-size: small;
+}
