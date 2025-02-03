@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> doc dashboard</title>
+</head>
+<body>
+    <h1>dashboard</h1>
+    <a href="profile/<%= doctor._id %>"><h2>The doctor's profile</h2></a>
+    <a href="/doctor/logout"><h2>Logout</h2></a>
+    <form action="/doctor/dashboard" method="post">
+        <label for="timeSlot">Choose a timeSlot:</label>
+        <select id="timeSlot" name="timeSlot">
+        <option value="">-- Select a Time slot --</option>
+        <option value="9-10">9-10</option>
+        <option value="10-11">10-11</option>
+        <option value="11-12">11-12</option>
+        <option value="12-1">12-1</option>
+        <option value="1-2">1-2</option>
+        <option value="2-3">2-3</option>
+        <option value="3-4">3-4</option>
+        <option value="4-5">4-5</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Open Time Slots</h2>
+        <% if (doctor.openSlots && doctor.openSlots.length > 0) { %>
+            <% doctor.openSlots.forEach((x,index)=>{ %>
+                <h4>Slot time: <%= x %></h4> <form action="/doctor/remove-slot/<%= index %>" method="post"><button type="submit">Remove this slot </button></form>
+            <% }) %>
+        <% } else { %>
+            <h4>No slots available</h4>
+        <% } %>
+
+
+    <h2>Booked Time Slots</h2>
+        <% if (doctor.bookedSlots && doctor.bookedSlots.length > 0) { %>
+            <% doctor.bookedSlots.forEach((key, value)=>{ %>
+                <h4>Slot time: <%= key %> || Booked By: <%= value %></h4>
+            <% }) %>
+        <% } else { %>
+            <h4>No slots available</h4>
+        <% } %>
+        
+    
+</body> 
+</html>
