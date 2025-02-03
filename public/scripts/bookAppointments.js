@@ -1,3 +1,9 @@
+function toggleTheme() {
+  document.body.classList.toggle("dark-mode");
+  const images = document.getElementsByTagName("img");
+  images.forEach(image => image.classList.toggle("dark-mode"));
+}
+
 function selectDate(selectedBtn) {
   const buttons = document.querySelectorAll('#days button');
   buttons.forEach(button => button.classList.remove('active'));

@@ -1,3 +1,18 @@
+:root {
+    --bg-color: white;
+    --text-color: black;
+}
+.dark-mode {
+    filter: invert(1);
+    background-color: black;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.6s ease-in-out;
+}
+
 .navbar {
     min-height: 80px;
     height: auto;

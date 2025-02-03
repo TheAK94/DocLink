@@ -27,6 +27,11 @@ router.route('/logout')
     return res.redirect('/');
 });
 
+router.get('/bookAppointments', checkAuth, async (req, res) => {
+    const allDoctors = await Doctor.find({});
+    res.render('bookAppointments', {allDoctors: allDoctors});
+})
+
 router.get('/book-slot/:doctor/:index', checkAuth, async (req,res)=>{
     try{
         const {doctor, index} = req.params;

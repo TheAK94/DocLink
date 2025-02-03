@@ -6,7 +6,7 @@
         <title>Doctors Listing</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="doc-listing-style.css">
+        <link rel="stylesheet" href="/styles/bookAppointments.css">
     </head>
     <body>
         <!-- NAVBAR -->
@@ -52,6 +52,7 @@
                 <h5>Filters</h5>
                 <hr>
                 <!-- Your filter options go here -->
+                <button onclick="toggleTheme()">Toggle Dark Mode</button>
                 <div class="mb-3">
                     <label for="filter1" class="form-label">Filter 1</label>
                     <input type="text" class="form-control" id="filter1" placeholder="Enter value">
@@ -87,10 +88,6 @@
                 </div>
             </div>
             
-            <!-- Button for Small Screens (visible on md and below) -->
-            
-            
-            <!-- Offcanvas Sidebar for Small Screens -->
             <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFilter" aria-labelledby="offcanvasFilterLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasFilterLabel">Filters</h5>
@@ -98,7 +95,6 @@
                 </div>
                 <div class="offcanvas-body">
                     <div class="filter-sidebar bg-light p-3">
-                        <!-- Same filter options as the large screen sidebar -->
                         <div class="mb-3">
                             <label for="offcanvasFilter1" class="form-label">Filter 1</label>
                             <input type="text" class="form-control" id="offcanvasFilter1" placeholder="Enter value">
@@ -111,7 +107,6 @@
                                 <option value="2">Option 2</option>
                             </select>
                         </div>
-                    <!-- Add more filters as needed -->
                     </div>
                 </div>
             </div>
@@ -203,6 +198,6 @@
         
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="doc-listing-script.js"></script>
+        <script src="/scripts/bookAppointments.js"></script>
     </body>
 </html>
