@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Doctors Listing</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="doc-listing-style.css">
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand fs-2" href="#">DocLink</a>
+            </div>
+        </nav>
+        <!-- NAVBAR ENDS HERE -->
+
+        <header>
+            <div class="container-nav-to-home d-none d-lg-block">
+                <div class="nav-to-home">
+                    <i class="bi bi-house" type="button"></i>
+                    <i class="bi bi-caret-right-fill"></i>
+                    <span id="title-span">Doctors Listing</span>
+                </div>
+            </div>
+            <div class="container-heading">
+                <div class="heading fs-2 pt-3 ps-4">
+                    Find A Doctor
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control rounded-pill" placeholder="   Search for Doctors..." id="searchInput">
+                    <span class="input-group-text ps-3" id="search-addon">
+                        <i class="bi bi-search"></i>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <div class="d-xl-none m-5 mb-2">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFilter" aria-controls="offcanvasFilter">
+            <i class="bi bi-funnel"></i> Filters
+            </button>
+        </div>
+
+        <!-- FILTER -->
+        <div class="d-flex">
+            <!-- Filter Sidebar for Large Screens (visible on lg and up) -->
+            <div class="d-none d-xl-block">
+                <div class="filter-sidebar bg-light p-3 pt-5">
+                <h5>Filters</h5>
+                <hr>
+                <!-- Your filter options go here -->
+                <div class="mb-3">
+                    <label for="filter1" class="form-label">Filter 1</label>
+                    <input type="text" class="form-control" id="filter1" placeholder="Enter value">
+                </div>
+                <div class="mb-3">
+                    <label for="filter2" class="form-label">Filter 2</label>
+                    <select class="form-select" id="filter2">
+                    <option selected>Choose...</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Experience (In Years)</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experienceFilter" id="exp0-5" value="0-5">
+                        <label class="form-check-label" for="exp0-5">0-5</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experienceFilter" id="exp6-10" value="6-10">
+                        <label class="form-check-label" for="exp6-10">6-10</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experienceFilter" id="exp11-15" value="11-15">
+                        <label class="form-check-label" for="exp11-15">11-15</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="experienceFilter" id="exp16+" value="16+">
+                        <label class="form-check-label" for="exp16+">16+</label>
+                    </div>
+                </div>
+                <!-- Add more filters as needed -->
+                </div>
+            </div>
+            
+            <!-- Button for Small Screens (visible on md and below) -->
+            
+            
+            <!-- Offcanvas Sidebar for Small Screens -->
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasFilter" aria-labelledby="offcanvasFilterLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasFilterLabel">Filters</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="filter-sidebar bg-light p-3">
+                        <!-- Same filter options as the large screen sidebar -->
+                        <div class="mb-3">
+                            <label for="offcanvasFilter1" class="form-label">Filter 1</label>
+                            <input type="text" class="form-control" id="offcanvasFilter1" placeholder="Enter value">
+                        </div>
+                        <div class="mb-3">
+                            <label for="offcanvasFilter2" class="form-label">Filter 2</label>
+                            <select class="form-select" id="offcanvasFilter2">
+                                <option selected>Choose...</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                            </select>
+                        </div>
+                    <!-- Add more filters as needed -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container mt-5 ms-4 doctor-list">
+                <div class="card w-100 mb-3">
+                    <div class="card-body row">
+                        <div class="d-flex col-lg-6 col-12 p-3">
+                            <img src="/assets/blank-profile-pic.webp" alt="Profile Picture" class="img-fluid rounded mb-3" id="profilePic">
+                            <div class="container">
+                                <h5 class="card-title">Dr. Strange</h5>
+                                <p class="exp-text">16+ Years Experience</p>
+                                <p class="fs-6">MBBS, DNB (General Medicine), DNB (Nephrology) | Nephrology</p>
+                                <p><i class="bi bi-geo-alt-fill me-3"></i>Bangalore</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12 p-3">
+                            <div class="ms-5 w-100" id="card-wid">
+                                <p class="fs-6">Select Date</p>
+                                <div id="days" class="btn-group" role="group">
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Mon</span>3
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Tue</span>4
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Wed</span>5
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Thu</span>6
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Fri</span>7
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Sat</span>8
+                                    </button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                        <span>Sun</span>9
+                                    </button>
+                                </div>
+                                <p class="fs-6 mt-3 mb-1">Available Slots: </p>
+                                <div class="d-flex align-items-center">
+                                    <!-- Left Scroll Button for Time Slots -->
+                                    <span type="button" id="scrollTimeLeft"><i class="bi bi-chevron-left fs-6"></i></span>
+
+                                    <!-- Scrollable Container for Time Buttons -->
+                                    <div id="timeContainer">
+                                        <div id="timeSlots">
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">9:00 AM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">9:30 AM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">10:00 AM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">10:30 AM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">11:00 AM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">11:30 AM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">12:00 PM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">12:30 PM</button>
+                                            <button type="button" class="btn btn-outline-success" onclick="selectSlot(this)">1:00 PM</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Right Scroll Button for Time Slots -->
+                                    <span type="button" id="scrollTimeRight"><i class="bi bi-chevron-right fs-6"></i></span>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="appoint-btn pe-5">
+                            <a href="#" class="btn btn-primary">Book Appointment</a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card w-100 mb-3">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <a href="#" class="btn btn-primary">Button</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+  
+        
+
+        
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="doc-listing-script.js"></script>
+    </body>
+</html>
