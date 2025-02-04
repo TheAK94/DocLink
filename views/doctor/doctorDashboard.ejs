@@ -6,10 +6,11 @@
     <title> doc dashboard</title>
 </head>
 <body>
-    <h1>dashboard</h1>
+    <h1>dashboard <%= doctor.firstName %><%= doctor.lastName %></h1>
     <a href="profile/<%= doctor._id %>"><h2>The doctor's profile</h2></a>
     <a href="/doctor/logout"><h2>Logout</h2></a>
     <form action="/doctor/dashboard" method="post">
+        <input type="date" id="date" name="date" required>
         <label for="timeSlot">Choose a timeSlot:</label>
         <select id="timeSlot" name="timeSlot">
         <option value="">-- Select a Time slot --</option>

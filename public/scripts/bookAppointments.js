@@ -6,15 +6,17 @@ function toggleTheme() {
 
 function selectDate(selectedBtn) {
   const buttons = document.querySelectorAll('#days button');
-  buttons.forEach(button => button.classList.remove('active'));
+  buttons.forEach(button => button.classList.remove('activeDate'));
   
-  selectedBtn.classList.add('active');
+  selectedBtn.classList.add('activeDate');
+  const selectedDate = selectedBtn.innerHTML;
 }
 function selectSlot(selectedBtn) {
     const buttons = document.querySelectorAll('#timeSlots button');
-    buttons.forEach(button => button.classList.remove('active'));
+    buttons.forEach(button => button.classList.remove('activeTime'));
     
-    selectedBtn.classList.add('active');
+    selectedBtn.classList.add('activeTime');
+    const selectedTime = selectedBtn.innerHTML;
   }
 
 document.getElementById("scrollTimeLeft").addEventListener("click", function () {

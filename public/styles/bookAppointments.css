@@ -185,3 +185,11 @@ body {
 .exp-text {
     font-size: small;
 }
+.activeTime{
+    background-color: #0087ad;
+    color: white;
+}
+.activeDate{
+    background-color: #0087ad;
+    color: white;
+}

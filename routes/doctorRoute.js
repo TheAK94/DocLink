@@ -37,33 +37,37 @@ router.route('/profile/:id')
 //dashboard
 router.route('/dashboard')
 .get(checkAuthDoctor, async (req,res)=>{
-    const doctor = await Doctor.findOne({id:req.doctor.id});
+    const doctor = await Doctor.findOne({_id:req.doctor._id});
     res.render('../views/doctor/doctorDashboard', {doctor: doctor});
 })
 .post(checkAuthDoctor, async (req,res)=>{
     try{
-        const {timeSlot} = req.body;
+        const {date, timeSlot} = req.body;
         if(!timeSlot){
             console.log("Please provide a valid time slot");
             return res.status(400).send("Please provide a valid time slot");
         }
-        console.log(req.doctor);
+        // console.log(req.doctor);
 
-        const currentDoctor = await Doctor.findOne({id : req.doctor.id});
+        const currentDoctor = await Doctor.findOne({_id : req.doctor._id});
         if(!currentDoctor){
             console.log("You are not logged in");
             return res.status(400).send("You are not logged in");
         }
-        if(currentDoctor.openSlots.includes(timeSlot)){
+        // if(currentDoctor.openSlots.includes(timeSlot)){
+        //     return res.status(400).send("You already have a filled slot at this time");
+        // }
+        if (currentDoctor.openSlots.some(slot => slot.date === date && slot.time === timeSlot)) {
             return res.status(400).send("You already have a filled slot at this time");
         }
-        currentDoctor.openSlots.push(timeSlot);
+
+        currentDoctor.openSlots.push({date: date, time: timeSlot});
         await currentDoctor.save();
-        console.log("current doc",currentDoctor);
+        // console.log("current doc",currentDoctor);
         
         console.log("Time slot added successfully");
         // return res.redirect('/doctor/dashboard');
-        res.render('doctordashboard', { doctor: currentDoctor });
+        res.render('../views/doctor/doctorDashboard', { doctor: currentDoctor });
     }
     catch(error){
         console.log(error);

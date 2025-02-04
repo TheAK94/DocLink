@@ -12,12 +12,13 @@ const doctorSchema = new schema({
     },
     speciality: {
         type: String,
-        required: false
+        required: false,
+        default: "None"
     },
     address:{
         type: String,
         required: false,
-        default: "Star Hospital, 13th Street, New York"
+        default: "Star Hospital, 13th Street, New Delhi"
     },
     email: {
         type: String,
@@ -27,17 +28,25 @@ const doctorSchema = new schema({
         type: String,
         required: true
     },
+    experience: {
+        type: Number,
+        required: false,
+        default: 0
+    },
     profilePicture: {
         type: String,
         default: ""
     },
-    openSlots:{
-        type: Array,
-        default: [],
-    },
+    openSlots:[
+        {
+          date: String,
+          time: String,
+        }
+      ],
     bookedSlots:[
         {
-          slot: String,
+          date: String,
+          time: String,
           user: String,
         }
       ],

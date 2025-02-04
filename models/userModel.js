@@ -28,7 +28,8 @@ const userSchema = new schema({
     },
     bookedAppointments: [
             {
-              slot: String,
+              date: String,
+              time: String,
               doctor: String,
             }
           ],

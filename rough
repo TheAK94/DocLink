@@ -32,3 +32,50 @@
     const allDoctors = await Doctor.find({});
     const myuser = await User.findOne({_id : req.user._id});
     res.render('userDashboard', {user: myuser, allDoctors: allDoctors});
+
+
+
+//doctor listing slot dates
+
+    <% 
+                                        const today = new Date();
+                                        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                                    %>
+
+                                    <% for (let i = 0; i < 7; i++) { 
+                                        let newDate = new Date();
+                                        newDate.setDate(today.getDate() + i);
+                                    %>
+                                        <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                                            <span><%= days[newDate.getDay()] %></span> <%= newDate.getDate() %>
+                                        </button>
+                                    <% } %>
+
+
+//alternative slot booking cards
+
+
+<div class="col-lg-6 col-12 p-3">
+
+<div class="ms-5 w-100" id="card-wid">
+    <p class="fs-6">Select Date</p>
+    <div id="days" class="btn-group" role="group">
+        
+
+            <% if (doctor.openSlots && doctor.openSlots.length > 0) { %>
+            <% doctor.openSlots.forEach((slot)=>{ %>
+                <button type="button" class="btn btn-outline-primary" onclick="selectDate(this)">
+                    <span><%= slot.date %></span> <%= slot.time  %>
+                </button>
+                <div class="appoint-btn pe-5">
+                    <a href="/user/book-slot/<%= doctor._id %>/<%= slot.date %>/<%= slot.time %>" class="btn btn-primary">Book Appointment</a>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <h4>No slots available</h4>
+        <% } %>
+       
+        
+    </div>  
+</div>
+</div>

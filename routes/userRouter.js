@@ -32,18 +32,34 @@ router.get('/bookAppointments', checkAuth, async (req, res) => {
     res.render('bookAppointments', {allDoctors: allDoctors});
 })
 
-router.get('/book-slot/:doctor/:index', checkAuth, async (req,res)=>{
+// using as an API 
+router.get('/available-slots/:doctorId/:date', async (req, res) => {
+    try {
+        const { doctorId, date } = req.params;
+        const thatDoctor = await Doctor.find({
+            _id: doctorId,
+        });
+        const slots = thatDoctor[0].openSlots.filter((slot) => slot.date === date);
+        res.json(slots);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
     try{
-        const {doctor, index} = req.params;
+        const {doctor, date, time} = req.params;
         console.log("Doctor ID:", doctor);
-        console.log("Slot Index:", index);
+        console.log("Slot date:", date);
+        console.log("Slot time:", time);
         console.log("User ID:", req.user._id);
         
         const thatDoctor = await Doctor.findOne({_id: doctor});
         if(!thatDoctor){
             return res.status(404).send("Doctor not found");
         }
-        const slot = thatDoctor.openSlots[index];
+        const slot = thatDoctor.openSlots.find((slot) => slot.date === date && slot.time === time);
         if(!slot){
             return res.status(404).send("Slot not found");
         }
@@ -52,31 +68,24 @@ router.get('/book-slot/:doctor/:index', checkAuth, async (req,res)=>{
             return res.status(404).send("Slot not found");
         }
 
-        
-        // thatDoctor.bookedSlots.push([slot, req.user.id]);
-        console.log("Slot booked, saved to doctor's booked slots");
-        
         //adding to user's booked appointments
         const thisUser = await User.findOne({_id: req.user._id});
         if(!thisUser){
             return res.status(404).send("user not found");
         }
-
         await User.updateOne(
             { _id: req.user._id },
-            { $push: { bookedAppointments: { slot: slot, doctor: thatDoctor.firstName, doctorId: thatDoctor._id } } }
+            { $push: { bookedAppointments: { date: date, time: time, doctor: thatDoctor._id } } }
           );
         console.log("User's appointment saved, redirecting...");
 
         //moving slot from open to booked
-        thatDoctor.openSlots.splice(index, 1);
+        thatDoctor.bookedSlots.push({date: date, time: time, user: req.user._id});
+        thatDoctor.openSlots = thatDoctor.openSlots.filter(slot => !(slot.date === date && slot.time === time));
         await thatDoctor.save();
-
+        console.log("Slot booked, saved to doctor's booked slots");
 
         //mailing the user
-
-        
-        
 
         res.redirect('/user/dashboard');
     }catch(error){
