@@ -24,6 +24,8 @@ async function handlerUserLogin(req, res) {
 
 async function handlerUserSignup(req, res) {
     const { firstName, lastName, email, password } = req.body;
+    console.log(firstName, lastName, email, password);
+    
     try {
         const event = await User.create({
             firstName: firstName,

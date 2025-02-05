@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialties - DocLink</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="specialities.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary position-relative">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-2" href="#">DocLink</a>
+
+            <!-- Collapsible Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                </ul>
+            </div>
+
+            <!-- Login Button and Toggler -->
+            <div class="d-flex align-items-center position-absolute end-0 top-50 translate-middle-y me-3">
+                <!-- Emergency Button -->
+                <div class="d-flex flex-column me-2">
+                    <span class="text-dark small" id="emergency-label">Emergency</span>
+                    <button type="button" class="btn btn-outline-info btn-hover-nav">
+                        <i class="bi bi-telephone-fill pe-2"></i>104
+                    </button>
+                </div>
+                <!-- Login Button -->
+                <button class="btn me-2 mtop-nav-fix login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                
+                <!-- Navbar Toggler (Menu Icon) -->
+                <button class="navbar-toggler mtop-nav-fix" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- NAVBAR ENDS HERE -->
+
+    <!-- LOGIN/REGISTER FORM -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            
+            <!-- Role Selection Section -->
+            <div id="roleSelection" class="modal-body text-center">
+            <h5>Select Your Role</h5>
+                <div class="d-grid gap-2 mt-3">
+                    <div class="row row-cols-1 row-cols-sm-3 g-2">
+                        <div class="col">
+                            <div class="card h-100 role-selec" type="button" onclick="selectRole('user')">
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <i class="bi bi-person fs-2"></i>
+                                    <p class="responsive-text mt-2">User</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 role-selec" type="button" onclick="selectRole('doctor')">
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <i class="bi bi-person-plus fs-2"></i>
+                                    <p class="responsive-text mt-2">Doctor</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 role-selec" type="button" onclick="selectRole('admin')">
+                                <div class="card-body d-flex flex-column justify-content-center">
+                                    <i class="bi bi-person-gear fs-2"></i>
+                                    <p class="responsive-text mt-2">Admin</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Authentication Section (Hidden until a role is selected) -->
+            <div id="authSection" style="display: none;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Login (<span id="roleLabel"></span>)</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Login Form -->
+                    <form id="loginForm" class="auth-form">
+                    <!-- Hidden field to hold the selected role -->
+                    <input type="hidden" id="roleInput" name="role" value="">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </div>
+                    </form>
+                    <!-- Register Form -->
+                    <form id="registerForm" class="auth-form" style="display: none;">
+                    <!-- Hidden field to hold the selected role -->
+                    <input type="hidden" id="roleInputRegister" name="role" value="">
+                    <div class="mb-3">
+                        <label for="regUsername" class="form-label">Full Name</label>
+                        <div class="d-flex">
+                            <input type="text" class="form-control me-2" id="regUsernameFirst" placeholder="First Name" required>
+                            <input type="text" class="form-control ms-2" id="regUsernameLast" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="regEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="regEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="regPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="regPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="regConfirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="regConfirmPassword" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <span class="small" id="toggleFormText">
+                        Don't have an account? 
+                        <a href="#" id="toggleFormLink" onclick="toggleForms(event)">Register here</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN/REGISTER FORM ENDS HERE -->
+    
+    <!-- BOOK APPOINTMENT BUTTON -->
+    <button class="btn d-none d-md-block rounded fixed-bottom-right" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <span>Book Appointment</span>
+    </button>
+    <button class="btn d-block d-md-none p-3 w-100 fixed-bottom" data-bs-toggle="modal" data-bs-target="#loginModal">
+        <span>Book Appointment</span>
+    </button>
+    <!-- BOOK APPOINTMENT BUTTON ENDS HERE -->
+
+    <main class="main-content">
+        <h2>All Specialties</h2>
+        <div class="specialties-container">
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                Cardiac Health
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-ribbon"></i></div>
+                Cancer Care
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-brain"></i></div>
+                Neurosciences
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-stomach"></i></div>
+                Gastro Sciences
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-bone"></i></div>
+                Orthopaedics
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                Renal Care
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-lungs"></i></div>
+                Liver Transplant
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-bone"></i></div>
+                Bone Marrow Transplant
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-dermatology"></i></div>
+                Dermatology
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-pills"></i></div>
+                Endocrinology
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-head-side-virus"></i></div>
+                ENT
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-scalpel"></i></div>
+                General Surgery
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-eye"></i></div>
+                Ophthalmology
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-lungs"></i></div>
+                Pulmonology
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+                Rheumatology
+            </a>
+            <a href="doctors.html" class="specialty-box">
+                <div class="icon"><i class="fas fa-urinal"></i></div>
+                Urology
+            </a>
+        </div>
+    </main>
+    
+    <!-- FOOTER SECTION -->
+    <footer class="footer-section bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>DocLink is a platform that connects patients with doctors, providing seamless healthcare services.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt"></i> 123 Health St, Wellness City</li>
+                        <li><i class="bi bi-telephone"></i> +123 456 7890</li>
+                        <li><i class="bi bi-envelope"></i> info@doclink.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
