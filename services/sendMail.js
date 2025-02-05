@@ -28,7 +28,7 @@
       }
       
       // sendEmail(
-      //   "ankitmuradpur@gmail.com",
+      //   "ankitmuradpur@gmail.com, ank008801@gmail.com",
       //   "Your Appointment is Confirmed",
       //   "Your appointment is scheduled successfully!"
       // );

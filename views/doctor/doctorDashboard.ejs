@@ -3,47 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> doc dashboard</title>
+    <title>Dashboard - Doctor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/styles/dash-doc-style.css">
 </head>
 <body>
-    <h1>dashboard <%= doctor.firstName %><%= doctor.lastName %></h1>
-    <a href="profile/<%= doctor._id %>"><h2>The doctor's profile</h2></a>
-    <a href="/doctor/logout"><h2>Logout</h2></a>
-    <form action="/doctor/dashboard" method="post">
-        <input type="date" id="date" name="date" required>
-        <label for="timeSlot">Choose a timeSlot:</label>
-        <select id="timeSlot" name="timeSlot">
-        <option value="">-- Select a Time slot --</option>
-        <option value="9-10">9-10</option>
-        <option value="10-11">10-11</option>
-        <option value="11-12">11-12</option>
-        <option value="12-1">12-1</option>
-        <option value="1-2">1-2</option>
-        <option value="2-3">2-3</option>
-        <option value="3-4">3-4</option>
-        <option value="4-5">4-5</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
-    <h2>Open Time Slots</h2>
-        <% if (doctor.openSlots && doctor.openSlots.length > 0) { %>
-            <% doctor.openSlots.forEach((x,index)=>{ %>
-                <h4>Slot time: <%= x %></h4> <form action="/doctor/remove-slot/<%= index %>" method="post"><button type="submit">Remove this slot </button></form>
-            <% }) %>
-        <% } else { %>
-            <h4>No slots available</h4>
-        <% } %>
+    <!-- NAVBAR -->
+    <nav class="navbar bg-body-tertiary mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-2" href="#">DocLink</a>
+            <div class="d-flex">
+                <div class="btn me-2 nav-btn" id="dashboardBtn"><i class="bi bi-house me-2"></i>Home</div>
+                <div class="btn me-2 nav-btn" id="profileBtn"><i class="bi bi-person me-2"></i>Profile</div>
+                <div class="btn me-2 nav-btn" id="editSlotsBtn"><i class="bi bi-calendar-event me-2"></i>Edit Slots</div>
+                <button class="Btn me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">           
+                    <div class="sign">
+                        <svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg>
+                    </div>
+                    <div class="text">Logout</div>
+                </button>
+            </div> 
+        </div>
+    </nav>
+    <!-- NAVBAR ENDS HERE -->
+
+    <!-- LOGOUT MODAL -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Logout</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a href="/doctor/logout"><button type="button" class="btn btn-outline-danger">Yes</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGOUT MODAL ENDS HERE -->
 
 
-    <h2>Booked Time Slots</h2>
-        <% if (doctor.bookedSlots && doctor.bookedSlots.length > 0) { %>
-            <% doctor.bookedSlots.forEach((key, value)=>{ %>
-                <h4>Slot time: <%= key %> || Booked By: <%= value %></h4>
-            <% }) %>
-        <% } else { %>
-            <h4>No slots available</h4>
-        <% } %>
+    <!-- DASHBOARD HOME -->
+    <section class="container section active" id="dashboard">
+        <p class="fs-1">Hello, Dr. <%= doctor.firstName %><%= doctor.lastName %></p>
+      
+        <!-- APPOINTMENTS SECTION -->
+        <div id="page1" class="appointment-page">
+            <h2 class="text-center mb-4" style="color: #0087ad;">Today's Appointments</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                
+                <!-- booked slots of doctor  -->
+
+                <% if (doctor.bookedSlots && doctor.bookedSlots.length > 0) { %>
+                    <% doctor.bookedSlots.forEach((slot)=>{ %>
+                        <div class="col">
+                            <div class="card h-100 appointment-card">
+                                <div class="card-body text-center">
+
+                                    <h4 class="card-title">Patient Name: <%= slot.user %> </h4>
+                                    <p class="card-text">Date: <%= slot.date %>  |  Time: <%= slot.time %></p>
+                                    <div class="d-flex justify-content-evenly">
+                                        <a href="/user/profile/<%= slot.userId %>"><div class="btn btn-primary fs-7">Patient Info</div></a>
+                                        <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <h4>No slots available</h4>
+                <% } %>
+                
+                
+                
+                
         
+            </div>
+        </div>
+      
+        <div id="page2" class="appointment-page" style="display: none;">
+            <h2 class="text-center mb-4" style="color: #0087ad;">Tomorrow's Appointments</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                <div class="col">
+                    <div class="card h-100 appointment-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">John Doe</h3>
+                            <p class="card-text">Time: 10:00 AM</p>
+                            <div class="d-flex justify-content-evenly">
+                                <div class="btn btn-primary fs-7">View Profile</div>
+                                <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100 appointment-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">John Doe</h3>
+                            <p class="card-text">Time: 10:00 AM</p>
+                            <div class="d-flex justify-content-evenly">
+                                <div class="btn btn-primary fs-7">View Profile</div>
+                                <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page3" class="appointment-page" style="display: none;">
+            <h2 class="text-center mb-4" style="color: #0087ad;">Appointments on (dd-mm-yy)</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                <div class="col">
+                    <div class="card h-100 appointment-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title">John Doe</h3>
+                            <p class="card-text">Time: 10:00 AM</p>
+                            <div class="d-flex justify-content-evenly">
+                                <div class="btn btn-primary fs-7">View Profile</div>
+                                <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- PAGINATION NAVIGATION -->
+        <nav aria-label="Page navigation example" class="mt-4">
+            <ul class="pagination justify-content-center" id="pagination">
+                <li class="page-item" id="prevPage">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+                <li class="page-item" id="nextPage">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            </ul>
+        </nav>
+    </section>
     
-</body> 
+    <!-- CANCEL APPOINTMENT MODAL -->
+    <div class="modal fade" id="cancelAppoint" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cancel Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure?</p>   
+                </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CANCEL SLOT MODAL -->
+    <div class="modal fade" id="cancelSlot" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cancel Slot</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure?</p>   
+                </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+
+    <!-- PROFILE SECTION -->
+    <main class="container my-5 section" id="profile">
+        <div class="row doctor-profile">
+            <div class="col-md-4 text-center">
+                <div class="doctor-image mb-4">
+                    <img src="istockphoto-177373093-612x612.jpg" alt="Doctor" class="img-fluid rounded-circle border border-5 border-primary">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="doctor-details">
+                    <h1 class="mb-4" style="color: #0087ad;">Dr. John Smith</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Speciality:</strong> <span id="speciality">Cardiology</span></p>
+                            <p><strong>Experience:</strong> <span id="experience">15 Years</span></p>
+                            <p><strong>Qualifications:</strong> <span id="qualifications">MBBS, MD</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Languages:</strong> <span id="languages">English, Hindi</span></p>
+                            <p><strong>Location:</strong> <span id="location">Wellness City Hospital</span></p>
+                            <p><strong>Availability:</strong> <span id="availability">Mon - Sat</span></p>
+                        </div>
+                    </div>
+                    <button id="editBtn" class="btn btn-primary mt-3">Edit Details</button>
+                    <div id="editControls" class="mt-3" style="display: none;">
+                        <button id="saveBtn" class="btn btn-success me-2">Save Details</button>
+                        <button id="returnBtn" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- EDIT SLOTS SECTION -->
+    <div class="container my-5 section" id="editSlots">
+        <h2 class="text-center mb-4" style="color: #0087ad;">Add Slots</h2>
+        <form action="/doctor/dashboard" method="post" id="updateSlotsForm">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="slotDate" class="form-label">Select Date</label>
+                    <input name="date" type="date" id="slotDate" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="slotTime" class="form-label">Select Time</label>
+                    <input name="timeSlot" type="text" id="slotTime" class="form-control" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary me-2">Add</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="appointment-page mt-5">
+            <h2 class="text-center mb-4" style="color: #0087ad;">Available Slots</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                <% if (doctor.openSlots && doctor.openSlots.length > 0) { %>
+                    <% doctor.openSlots.forEach((slot, index)=>{ %>
+                        <div class="col">
+                            <div class="card h-100 appointment-card">
+                                <div class="card-body text-center">
+                                    <h3 class="card-text fs-5">Not Booked</h3>
+                                    <p class="card-text">Date: <%= slot.date %></p>
+                                    <p class="card-text">Time: <%= slot.time %></p>
+                                    <div class="d-flex justify-content-evenly">
+                                        <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelSlot">
+                                            <form action="/doctor/remove-slot/<%= index %>" method="post"><button type="submit">Remove this Slot</button></form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <h4>No slots available</h4>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- EDIT SLOTS SECTION ENDS HERE -->
+
+    
+
+    <!-- FOOTER -->
+    <footer class="footer-section bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>DocLink is a platform that connects patients with doctors, providing seamless healthcare services.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt"></i> 123 Health St, Wellness City</li>
+                        <li><i class="bi bi-telephone"></i> +123 456 7890</li>
+                        <li><i class="bi bi-envelope"></i> info@doclink.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/scripts/dash-doc-script.js"></script>
+</body>
 </html>

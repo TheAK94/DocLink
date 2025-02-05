@@ -24,7 +24,12 @@ async function handlerDoctorLogin(req, res) {
 
 async function handlerDoctorSignup(req, res) {
     const { firstName, lastName, speciality, email, password } = req.body;
+   
     try {
+        const checkExistingDoctor = await Doctor.findOne({ email });
+        if(checkExistingDoctor){
+            return res.status(401).send("Doctor already exists, try new email");
+        }
         const event = await Doctor.create({
             firstName: firstName,
             lastName: lastName,

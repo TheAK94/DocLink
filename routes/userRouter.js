@@ -92,14 +92,14 @@ router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
         console.log("User's appointment saved, redirecting...");
 
         //moving slot from open to booked
-        thatDoctor.bookedSlots.push({date: date, time: time, user: req.user._id});
+        thatDoctor.bookedSlots.push({date: date, time: time, user: req.user.firstName, userId: req.user._id});
         thatDoctor.openSlots = thatDoctor.openSlots.filter(slot => !(slot.date === date && slot.time === time));
         await thatDoctor.save();
         console.log("Slot booked, saved to doctor's booked slots");
 
         //mailing the user
         // sendEmail(
-        //     "ankitmuradpur@gmail.com",
+        //     `${thisUser.email}, heyyynkit@gmail.com`,
         //     "Your Appointment is Confirmed",
         //     `Booked your appointment on "${date}" at "${time}" with "${thatDoctor.firstName}". Please be a good patient and try to be on time.`
         //   );
@@ -148,7 +148,7 @@ router.get('/cancel-appointment/:doctorId/:date/:time', checkAuth, async (req,re
 
 // profile route
 router.route('/profile/:id')
-.get(checkAuth, async (req,res)=>{
+.get(async (req,res)=>{
     try{
         const currentUser = await User.findOne({id : req.params._id});
         
