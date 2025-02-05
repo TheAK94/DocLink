@@ -28,7 +28,7 @@ router.route('/profile/:id')
         return res.status(404).send("User not found");
     }
 
-    res.render('doctorProfile', {doctor: currentDoctor});
+    res.render('doctor/doctorProfile', {doctor: currentDoctor});
     }catch(error){
         console.log(error); 
     }

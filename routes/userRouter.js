@@ -33,18 +33,18 @@ router.get('/bookAppointments', checkAuth, async (req, res) => {
 })
 
 // using as an API 
-router.get('/available-slots/:doctorId/:date', async (req, res) => {
-    try {
-        const { doctorId, date } = req.params;
-        const thatDoctor = await Doctor.find({
-            _id: doctorId,
-        });
-        const slots = thatDoctor[0].openSlots.filter((slot) => slot.date === date);
-        res.json(slots);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+// router.get('/available-slots/:doctorId/:date', async (req, res) => {
+//     try {
+//         const { doctorId, date } = req.params;
+//         const thatDoctor = await Doctor.find({
+//             _id: doctorId,
+//         });
+//         const slots = thatDoctor[0].openSlots.filter((slot) => slot.date === date);
+//         res.json(slots);
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// });
 
 
 router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
@@ -75,7 +75,7 @@ router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
         }
         await User.updateOne(
             { _id: req.user._id },
-            { $push: { bookedAppointments: { date: date, time: time, doctor: thatDoctor._id } } }
+            { $push: { bookedAppointments: { date: date, time: time, doctor: thatDoctor.firstName, doctorId: thatDoctor._id } } }
           );
         console.log("User's appointment saved, redirecting...");
 
@@ -93,6 +93,35 @@ router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
     }
 });
 
+
+
+router.get('/cancel-appointment/:doctorId/:date/:time', checkAuth, async (req,res)=>{
+    try {
+        const {doctorId, date, time} = req.params;
+        const thatDoctor = await Doctor.findOne({_id: doctorId});
+        const thatUser = await User.findOne({_id : req.user._id});
+
+        console.log("before deleting", thatUser.bookedAppointments);
+
+        thatDoctor.bookedSlots = thatDoctor.bookedSlots.filter((slot)=>{return !(slot.date === date && slot.time === time)});
+        thatDoctor.openSlots.push({date: date, time: time});
+        console.log("after deleting", thatUser.bookedAppointments);
+        
+        thatUser.bookedAppointments = thatUser.bookedAppointments.filter((appointment)=> !(appointment.date === date && appointment.time === time && appointment.doctorId === doctorId));
+        await thatDoctor.save();
+        await thatUser.save();
+        console.log('deleted successfully');
+        res.redirect('/user/dashboard')
+
+    } catch (error) {
+        console.log(error);
+        
+    }
+})
+
+
+
+// profile route
 router.route('/profile/:id')
 .get(checkAuth, async (req,res)=>{
     try{

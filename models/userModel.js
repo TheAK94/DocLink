@@ -31,6 +31,7 @@ const userSchema = new schema({
               date: String,
               time: String,
               doctor: String,
+              doctorId: String
             }
           ],
           default: [],

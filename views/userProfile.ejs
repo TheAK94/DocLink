@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile - DocLink</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="user_profile.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar bg-body-tertiary mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand fs-2" href="#">DocLink</a>
+            <div class="d-flex">
+                <div class="btn me-2 nav-btn" id="dashboardBtn"><i class="bi bi-house me-2"></i>Home</div>
+                <div class="btn me-2 nav-btn" id="profileBtn"><i class="bi bi-person me-2"></i>Profile</div>
+                <div class="btn me-2 nav-btn"><i class="bi bi-calendar-event me-2"></i>My Appointments</div>
+                <button class="Btn me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">           
+                    <div class="sign">
+                        <svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg>
+                    </div>
+                    <div class="text">Logout</div>
+                </button>
+            </div> 
+        </div>
+    </nav>
+    <!-- NAVBAR ENDS HERE -->
+
+    <!-- LOGOUT MODAL -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Logout</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <a href="/user/logout"><button type="button" class="btn btn-outline-danger">Yes</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGOUT MODAL ENDS HERE -->
+
+    <!-- MAIN CONTENT -->
+    <main class="container my-5">
+        <div class="row doctor-profile">
+            <div class="col-md-4 text-center">
+                <div class="doctor-image mb-4">
+                    <img src="istockphoto-177373093-612x612.jpg" alt="Doctor" class="img-fluid rounded-circle border border-5 border-primary">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="doctor-details">
+                    <h1 class="mb-4" style="color: #0087ad;">Dr. John Smith</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Speciality:</strong> <span id="speciality">Cardiology</span></p>
+                            <p><strong>Experience:</strong> <span id="experience">15 Years</span></p>
+                            <p><strong>Qualifications:</strong> <span id="qualifications">MBBS, MD</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Languages:</strong> <span id="languages">English, Hindi</span></p>
+                            <p><strong>Location:</strong> <span id="location">Wellness City Hospital</span></p>
+                            <p><strong>Availability:</strong> <span id="availability">Mon - Sat</span></p>
+                        </div>
+                    </div>
+                    <button id="editBtn" class="btn btn-primary mt-3">Edit Details</button>
+                    <div id="editControls" class="mt-3" style="display: none;">
+                        <button id="saveBtn" class="btn btn-success me-2">Save Details</button>
+                        <button id="returnBtn" class="btn btn-secondary">Return</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- APPOINTMENTS SECTION -->
+    <section class="container mb-5">
+        <h2 class="text-center mb-4" style="color: #0087ad;">Upcoming Appointments</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100 appointment-card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">John Doe</h3>
+                        <p class="card-text">Date: Feb 5, 2025</p>
+                        <p class="card-text">Time: 10:00 AM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 appointment-card past-appointment">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Jane Smith</h3>
+                        <p class="card-text">Date: Jan 25, 2025</p>
+                        <p class="card-text">Time: 2:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 appointment-card">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Robert Brown</h3>
+                        <p class="card-text">Date: Feb 10, 2025</p>
+                        <p class="card-text">Time: 3:30 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>DocLink is a platform that connects patients with doctors, providing seamless healthcare services.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-geo-alt"></i> 123 Health St, Wellness City</li>
+                        <li><i class="bi bi-telephone"></i> +123 456 7890</li>
+                        <li><i class="bi bi-envelope"></i> info@doclink.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript for Edit/Save/Return functionality
+        const editBtn = document.getElementById('editBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const returnBtn = document.getElementById('returnBtn');
+        const editControls = document.getElementById('editControls');
+        const fields = ['speciality', 'experience', 'qualifications', 'languages', 'location', 'availability'];
+    
+        // List of specialities
+        const specialities = [
+            'Cardiac Health', 'Cancer Care', 'Neurosciences', 'Gastro Sciences', 
+            'Orthopaedics', 'Renal Care', 'Liver Transplant', 'Bone Marrow Transplant', 
+            'Dermatology', 'Endocrinology', 'ENT', 'General Surgery', 
+            'Ophthalmology', 'Pulmonology', 'Rheumatology', 'Urology'
+        ];
+    
+        editBtn.addEventListener('click', () => {
+            // Make fields editable
+            fields.forEach(field => {
+                const span = document.getElementById(field);
+                const value = span.innerText;
+    
+                if (field === 'speciality') {
+                    // Create a select dropdown for speciality
+                    let selectHTML = '<select class="form-control">';
+                    specialities.forEach(spec => {
+                        const selected = spec === value ? 'selected' : '';
+                        selectHTML += `<option value="${spec}" ${selected}>${spec}</option>`;
+                    });
+                    selectHTML += '</select>';
+                    span.innerHTML = selectHTML;
+                } else {
+                    span.innerHTML = `<input type="text" class="form-control" value="${value}">`;
+                }
+            });
+    
+            // Show Save and Return buttons
+            editControls.style.display = 'block';
+            editBtn.style.display = 'none';
+        });
+    
+        saveBtn.addEventListener('click', () => {
+            // Save the edited values
+            fields.forEach(field => {
+                if (field === 'speciality') {
+                    const select = document.getElementById(field).querySelector('select');
+                    const value = select.value;
+                    document.getElementById(field).innerText = value;
+                } else {
+                    const input = document.getElementById(field).querySelector('input');
+                    const value = input.value;
+                    document.getElementById(field).innerText = value;
+                }
+            });
+    
+            // Hide Save and Return buttons
+            editControls.style.display = 'none';
+            editBtn.style.display = 'block';
+        });
+    
+        returnBtn.addEventListener('click', () => {
+            // Revert to original values
+            fields.forEach(field => {
+                const span = document.getElementById(field);
+                span.innerHTML = span.innerText; // Remove input field
+            });
+    
+            // Hide Save and Return buttons
+            editControls.style.display = 'none';
+            editBtn.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

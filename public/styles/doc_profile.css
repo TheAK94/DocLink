@@ -1,0 +1,57 @@
+/* Inherit styles from landing page */
+@import url('style.css');
+
+.doctor-profile {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    transition: transform 0.3s ease;
+}
+
+.doctor-profile:hover {
+    transform: translateY(-5px);
+}
+
+.doctor-image img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px solid #0087ad !important;
+    transition: transform 0.3s ease;
+}
+
+.doctor-image img:hover {
+    transform: scale(1.05);
+}
+
+.appointment-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.appointment-card:hover:not(.past-appointment) {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    background: linear-gradient(281deg, #007C9D, #01C9C9);
+    color: white;
+}
+
+.past-appointment {
+    background-color: #f0f0f0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .doctor-profile {
+        text-align: center;
+    }
+    
+    .doctor-image img {
+        width: 200px;
+        height: 200px;
+    }
+}

@@ -52,6 +52,8 @@
         <!-- LOGOUT ENDS HERE -->
 
 
+        
+
         <!-- TODAY'S APPOINTMENTS -->
         <section class="container section active" id="dashboard">
             <p class="fs-1">Hello, User</p>
@@ -67,26 +69,48 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h5 class="card-title"><%= element.doctor %></h5>
-                                    <h6 class="card-subtitle mb-2 text-muted"><%= element.slot %></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"><%= element.date %> | Time : <%= element.time %></h6>
                                     <p class="card-text">Specialist in mystical medicine and alternate reality healthcare solutions.</p>
                                     <div class="d-flex gap-2">
-                                        <a href="#" class="btn btn-primary btn-sm">View Profile</a>
-                                        <a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
+                                        <a href="/doctor/profile/<%= element.doctorId %>" class="btn btn-primary btn-sm">View Profile</a>
+                                        <button data-bs-toggle="modal" data-bs-target="" class="btn btn-outline-danger btn-sm"><a href="/user/cancel-appointment/<%= element.doctorId %>/<%= element.date %>/<%= element.time %>">Cancel</a></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+<!-- confirm cancel appointments modal -->
+                        <div class="modal fade" id="confirmCancel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirm Cancelling this Appointment</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <a ><button type="button" class="btn btn-outline-danger">Yes</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!-- confirm cancel appointments modal end-->
+                
+
                     <% }) %>
                 <% } %>
             </div>
         </section>
         <!-- TODAY'S APPOINTMENTS ENDS HERE -->
 
-
         <!-- BOOK APPOINTMENT BUTTON -->
-        <button class="btn d-none d-md-block rounded fixed-bottom-right">
-            <span><a style="text-decoration: none; color: black;" href="/user/bookAppointments">Book Appointment</a></span>
+        <a style="text-decoration: none; color: black;" href="/user/bookAppointments"><button class="btn d-none d-md-block rounded fixed-bottom-right">
+            <span>Book Appointment</span>
         </button>
+        </a>
         <button class="btn d-block d-md-none p-3 w-100 fixed-bottom">
             <span><a style="text-decoration: none; color: black;" href="/user/bookAppointments">Book Appointment</a></span>
         </button>
