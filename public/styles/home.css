@@ -191,3 +191,9 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
     transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
 }  
+
+/* push message style  */
+.moveRight {
+    position: absolute;
+    animation: moveToRight 2s forwards; /* Duration: 2 seconds, stays at the final position */
+  }

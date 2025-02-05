@@ -1,0 +1,20 @@
+<!-- notification -->
+
+<div id="ddiv" class="alert alert-warning" style="border-left:10px burlywood solid; display: none;width:fit-content; z-index: 1999; position:absolute; left: 5%; bottom: 5%; margin: 5%;" role="alert">
+    <%= content %>
+</div>
+
+        <% if (flag == 1) { %>
+            <script>
+                const ddiv = document.getElementById("ddiv");
+                ddiv.style.display = "inline";
+                ddiv.classList.add("moveRight");
+                setTimeout(() => {
+                    ddiv.style.display = "none";
+                }, 5000);
+            </script>
+        <% } else if(flag == 0) { %>
+            <script>
+                alert("Failed to delete the note for some reason");
+            </script>
+        <% } %>

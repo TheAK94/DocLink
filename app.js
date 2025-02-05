@@ -20,7 +20,11 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 app.get('/', async (req, res)=>{
-    res.render('home');
+    var flag = req.cookies?.flag || 100;
+      var content = req.cookies?.content || "Done!";
+      res.clearCookie('flag');
+      res.clearCookie('content');
+    res.render('home', {flag, content});
 })
 
 app.use('/user',userRoute);

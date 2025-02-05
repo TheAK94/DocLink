@@ -1,12 +1,12 @@
 import User from '../models/userModel.js';
 import jwt from "jsonwebtoken"
-
+import { sendEmail } from '../services/sendMail.js';
 
 async function handlerUserLogin(req, res) {
     const { email, password } = req.body;
     const userIsThere = await User.findOne({ email, password });
     if (!userIsThere) {
-        return res.send("either email or password is wrong");
+        return res.status(401).send("either email or password is wrong");
     }
 
     req.user = userIsThere;
@@ -25,8 +25,11 @@ async function handlerUserLogin(req, res) {
 async function handlerUserSignup(req, res) {
     const { firstName, lastName, email, password } = req.body;
     console.log(firstName, lastName, email, password);
-    
     try {
+        const checkExistingUser = await User.findOne({email: email});
+        if(checkExistingUser){
+            return res.status(401).send("User already exists, try new email");
+        }
         const event = await User.create({
             firstName: firstName,
             lastName: lastName,
@@ -34,6 +37,22 @@ async function handlerUserSignup(req, res) {
             password: password,
         });
         console.log("created AN USER");
+
+        res.cookie('flag', 1, { 
+            maxAge: 2000, 
+          });
+        res.cookie('content', "Successfully Registered!",  { 
+            maxAge: 2000, 
+          });
+
+
+        // mailing user 
+        // sendEmail(
+        //     "ankitmuradpur@gmail.com",
+        //     "You are Signed In",
+        //     "Your are signed in bro!"
+        //   );
+
         res.redirect('/');
     } catch (err) {
         console.log("ERROR CREATING AN USER", err);
