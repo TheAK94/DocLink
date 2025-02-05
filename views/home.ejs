@@ -111,12 +111,12 @@
                         <!-- Hidden field to hold the selected role -->
                         <input type="hidden" id="roleInputRegister" name="role" value="">
                         <div class="mb-3">
-                            <label for="regUsername" class="form-label">First Name</label>
-                            <input name="firstName" type="text" class="form-control" id="regUsername" required>
+                            <label for="regUsername1" class="form-label">First Name</label>
+                            <input name="firstName" type="text" class="form-control" id="regUsername1" required>
                         </div>
                         <div class="mb-3">
-                            <label for="regUsername" class="form-label">Last Name</label>
-                            <input name="lastName" type="text" class="form-control" id="regUsername" required>
+                            <label for="regUsername2" class="form-label">Last Name</label>
+                            <input name="lastName" type="text" class="form-control" id="regUsername2" required>
                         </div>
                         <div class="mb-3">
                             <label for="regEmail" class="form-label">Email</label>
@@ -144,6 +144,13 @@
         <!-- LOGIN/REGISTER FORM ENDS HERE -->
   
 
+        <!-- ASK AI BUTTON -->
+        <button class="btn d-none d-md-block rounded" id="askAIbtn">
+            <span><i class="bi bi-stars pe-2"></i>Ask AI</span>
+        </button>
+        <!-- ASK AI BUTTON ENDS HERE -->
+         
+
         <!-- BOOK APPOINTMENT BUTTON -->
         <button class="btn d-none d-md-block rounded fixed-bottom-right" data-bs-toggle="modal" data-bs-target="#loginModal">
             <span>Book Appointment</span>
@@ -155,8 +162,8 @@
 
 
         <!-- Carousel Section -->
-        <section class="mb-3" style="height: 590px; width: 100%; border: 5px solid black;">
-        <!-- img size: 1920x590 -->
+        <section class="mb-3" id="home-banner">
+            <img src="/assets/beach_sea.jpeg" alt="banner-home">
         </section>
 
 
@@ -214,6 +221,31 @@
             </div>
         </div>          
         <!-- NAV LINKS END HERE -->
+
+
+        <!-- Specialties Section -->
+        <div class="container categories mb-5">
+            <div class="row align-items-center">
+                <div class="col-md-8 specialties">
+                    <h2>Specialities</h2>
+                    <p><strong>Find The Right Doctors for you...</strong></p>
+                    <ul class="list-unstyled">
+                        <li><a href="doctors.html">&#9658; Cardiac Health</a></li>
+                        <li><a href="doctors.html">&#9658; Cancer Care</a></li>
+                        <li><a href="doctors.html">&#9658; Neuro Sciences</a></li>
+                        <li><a href="doctors.html">&#9658; Gastro Sciences</a></li>
+                    </ul>
+                    <div class="view-more">
+                        <a href="specialities_page.html">
+                            <button class="btn btn-primary">View More</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 doctor-image text-center">
+                    <img src="/assets/doc-illus.jpeg" alt="Doctor Illustration" class="img-fluid" width="150">
+                </div>
+            </div>
+        </div>
 
 
         <!-- FOOTER SECTION -->
