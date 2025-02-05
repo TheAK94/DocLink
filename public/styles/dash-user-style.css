@@ -193,3 +193,10 @@ nav button {
 .bi-stars::before {
     padding-top: 6px;
 }
+
+
+/* push message style  */
+.moveRight {
+    position: absolute;
+    animation: moveToRight 2s forwards; /* Duration: 2 seconds, stays at the final position */
+  }

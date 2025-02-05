@@ -222,8 +222,8 @@
 
 .bi-stars::before {
     padding-top: 6px;
-}
-    background-color: rgb(255, 156, 42);
+
+    /* background-color: rgb(255, 156, 42); */
     z-index: 1000; /* Ensure it stays above other elements */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
     transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */

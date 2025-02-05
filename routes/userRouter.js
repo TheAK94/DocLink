@@ -1,6 +1,7 @@
 import express from 'express';
 const app = express();
 const router = express.Router();
+import { sendEmail } from '../services/sendMail.js';
 
 import { handlerUserLogin, handlerUserSignup } from '../controllers/userController.js';
 import checkAuth from '../middlewares/checkAuth.js';
@@ -18,7 +19,13 @@ router.route('/dashboard')
 .get(checkAuth, async (req,res)=>{
     const allDoctors = await Doctor.find({});
     const myuser = await User.findOne({_id : req.user._id});
-    res.render('userDashboard', {user: myuser, allDoctors: allDoctors});
+
+    var flag = req.cookies?.flag || 100;
+    var content = req.cookies?.content || "Done!";
+    res.clearCookie('flag');
+    res.clearCookie('content');
+
+    res.render('userDashboard', {user: myuser, allDoctors: allDoctors, flag, content});
 });
 
 router.route('/logout')
@@ -29,7 +36,12 @@ router.route('/logout')
 
 router.get('/bookAppointments', checkAuth, async (req, res) => {
     const allDoctors = await Doctor.find({});
-    res.render('bookAppointments', {allDoctors: allDoctors});
+
+    var flag = req.cookies?.flag || 100;
+    var content = req.cookies?.content || "Done!";
+    res.clearCookie('flag');
+    res.clearCookie('content');
+    res.render('bookAppointments', {allDoctors: allDoctors,flag, content});
 })
 
 // using as an API 
@@ -86,6 +98,19 @@ router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
         console.log("Slot booked, saved to doctor's booked slots");
 
         //mailing the user
+        // sendEmail(
+        //     "ankitmuradpur@gmail.com",
+        //     "Your Appointment is Confirmed",
+        //     `Booked your appointment on "${date}" at "${time}" with "${thatDoctor.firstName}". Please be a good patient and try to be on time.`
+        //   );
+
+        //setting push message
+        res.cookie('flag', 1, { 
+            maxAge: 2000, 
+          });
+        res.cookie('content', `Booked your appointment on "${date}" at "${time}" with "${thatDoctor.firstName}"`,  { 
+            maxAge: 2000, 
+          });
 
         res.redirect('/user/dashboard');
     }catch(error){
