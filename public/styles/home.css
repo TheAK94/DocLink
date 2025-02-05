@@ -180,8 +180,8 @@
 }
 
 #askAIbtn {
-    height: 45px;
-    width: 45px;
+    height: 50px;
+    width: 50px;
     position: fixed;
     bottom: 80px;
     right: 20px;
@@ -220,14 +220,34 @@
     opacity: 1;
 }
 
-.bi-stars::before {
-    padding-top: 6px;
+#askAIbtn:hover .bi-stars::before {
+    padding-top: 0px;
+}
 
-    /* background-color: rgb(255, 156, 42); */
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
-}  
+.bi-stars::before {
+    padding-top: 10px;
+}
+
+@media(max-width:768px) {
+    #askAIbtn.expanded {
+        width: 120px;
+        border: 2px solid transparent;
+        background-image: 
+            linear-gradient(#578FCA, #B2A5FF),
+            linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+    }
+    
+    #askAIbtn.expanded .askAItitle {
+        opacity: 1;
+    }
+
+    .bi-stars::before {
+        padding-top: 0px;
+        padding-left: 18px;
+    }
+} 
 
 /* push message style  */
 .moveRight {
