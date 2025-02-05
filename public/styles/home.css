@@ -180,14 +180,46 @@
 }
 
 #askAIbtn {
-    height: 50px;
-    width: 160px;
+    height: 45px;
+    width: 45px;
     position: fixed;
     bottom: 80px;
     right: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #3674B5;
     color: white;
-    background-color: rgb(255, 156, 42);
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
-}  
+    padding: 8px;
+    cursor: pointer;
+    transition: width 0.3s ease;
+    outline: none;
+    border: none;
+    border-radius: 50rem;
+}
+
+#askAIbtn .askAItitle {
+    white-space: nowrap;
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#askAIbtn:hover {
+    width: 120px;
+    border: 2px solid transparent;
+    background-image: 
+        linear-gradient(#578FCA, #B2A5FF),
+        linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    }
+
+#askAIbtn:hover .askAItitle {
+    opacity: 1;
+}
+
+.bi-stars::before {
+    padding-top: 6px;
+}

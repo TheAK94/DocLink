@@ -148,3 +148,48 @@ nav button {
     height: 200px;
     width: 200px;
 }
+
+#askAIbtn {
+    height: 45px;
+    width: 45px;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #3674B5;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    transition: width 0.3s ease;
+    outline: none;
+    border: none;
+    border-radius: 50rem;
+}
+
+#askAIbtn .askAItitle {
+    white-space: nowrap;
+    margin-left: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#askAIbtn:hover {
+    width: 120px;
+    border: 2px solid transparent;
+    background-image: 
+        linear-gradient(#578FCA, #B2A5FF),
+        linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    }
+
+#askAIbtn:hover .askAItitle {
+    opacity: 1;
+}
+
+.bi-stars::before {
+    padding-top: 6px;
+}
