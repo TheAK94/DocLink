@@ -111,83 +111,128 @@
     }
 }
 
-#goTo .col .card {
-    min-height: 150px;
-    height: auto;
-    max-width: 150px;
-    width: auto;
-    border: none;
-    border-radius: 20%;
-    box-shadow: 6px 6px 70px rgb(16 40 81 / 23%);
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-#goTo .col .card:hover {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #597e91;
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+    background-color: #E0A96D;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.main-content {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.specialties-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px; /* Limit the maximum width for better alignment */
+    margin: 0 auto; /* Center the container */
+}
+
+.specialty-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    width: calc(25% - 20px); /* 4 boxes per row (25% width minus gap) */
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    flex-direction: column;
+}
+
+.specialty-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     border-color: #01C9C9;
     background: linear-gradient(281deg, #007C9D, #01C9C9);
 }
 
-.responsive-text {
-    font-size: 0.9rem; /* Base font-size for extra small devices */
-    font-weight: 400;
-}
-
-@media (min-width: 576px) { /* Small devices */
-    .responsive-text {
-        font-size: 1.1rem;
-    }
-}
-
-.role-selec {
-    border-radius: 10%;
-}
-.role-selec:active {
-    border: 2px solid #0087ad;
-}
-
-#home-banner img {
-    max-width: 100%; 
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
-.specialties h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.specialties ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.specialties ul li {
+.specialty-box .icon {
+    font-size: 40px;
     margin-bottom: 10px;
+    color: black;
 }
 
-.specialties ul li a {
-    text-decoration: none;
-    color: #333;
-}
-
-.specialties ul li a:hover {
-    color: #007C9D;
-}
-
-.view-more {
+.footer {
+    background-color: #597e91;
+    color: white;
+    padding: 10px;
+    text-align: center;
     margin-top: 20px;
 }
 
-#askAIbtn {
-    height: 50px;
-    width: 160px;
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    color: white;
-    background-color: rgb(255, 156, 42);
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
-}  
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .specialty-box {
+        width: calc(33.33% - 20px); /* 3 boxes per row on smaller screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .specialty-box {
+        width: calc(50% - 20px); /* 2 boxes per row on even smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .specialty-box {
+        width: calc(100% - 20px); /* 1 box per row on mobile screens */
+    }
+}

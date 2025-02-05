@@ -2,29 +2,30 @@
   "name": "sickfix",
   "version": "1.0.0",
   "description": "Fixes your sickness of all kind - get an appointment now",
-  "main": "app.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "homepage": "https://github.com/ankit-3131/SickFix#readme",
+  "bugs": {
+    "url": "https://github.com/ankit-3131/SickFix/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ankit-3131/SickFix.git"
   },
-  "author": "Ankit Kumar",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ankit-3131/SickFix/issues"
-  },
-  "homepage": "https://github.com/ankit-3131/SickFix#readme",
-  "devDependencies": {
-    "nodemon": "^3.1.9"
+  "author": "Ankit Kumar",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.5"
+    "mongoose": "^8.9.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

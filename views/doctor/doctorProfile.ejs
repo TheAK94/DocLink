@@ -7,5 +7,33 @@
 </head>
 <body>
     <h1>Name: <%= doctor.firstName %></h1>
+
+    <!-- PROFILE SECTION -->
+    <main class="container my-5 section" id="profile">
+        <div class="row doctor-profile">
+            <div class="col-md-4 text-center">
+                <div class="doctor-image mb-4">
+                    <img src="istockphoto-177373093-612x612.jpg" alt="Doctor" class="img-fluid rounded-circle border border-5 border-primary">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="doctor-details">
+                    <h1 class="mb-4" style="color: #0087ad;">Dr. John Smith</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Speciality:</strong> <span id="speciality">Cardiology</span></p>
+                            <p><strong>Experience:</strong> <span id="experience">15 Years</span></p>
+                            <p><strong>Qualifications:</strong> <span id="qualifications">MBBS, MD</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Languages:</strong> <span id="languages">English, Hindi</span></p>
+                            <p><strong>Location:</strong> <span id="location">Wellness City Hospital</span></p>
+                            <p><strong>Availability:</strong> <span id="availability">Mon - Sat</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
