@@ -84,7 +84,9 @@ const profileBtn = document.getElementById('profileBtn');
 const dashboardSection = document.getElementById('dashboard');
 const profileSection = document.getElementById('profile');
 const editSlotsBtn = document.getElementById('editSlotsBtn');
-const editSlotsSection = document.getElementById('editSlots')
+const editSlotsSection = document.getElementById('editSlots');
+const apptHistBtn = document.getElementById('apptHistBtn');
+const apptHistSection = document.getElementById('apptHist');
 
 // Function to switch sections
 function showSection(sectionToShow) {
@@ -92,6 +94,7 @@ function showSection(sectionToShow) {
   dashboardSection.classList.remove('active');
   profileSection.classList.remove('active');
   editSlotsSection.classList.remove('active');
+  apptHistSection.classList.remove('active');
   // Show the selected section
   sectionToShow.classList.add('active');
 }
@@ -109,6 +112,9 @@ editSlotsBtn.addEventListener('click', () => {
   showSection(editSlotsSection);
 });
 
+apptHistBtn.addEventListener('click', () => {
+  showSection(apptHistSection);
+});
 
 
 document.addEventListener('DOMContentLoaded', function() {
