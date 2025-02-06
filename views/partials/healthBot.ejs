@@ -1,0 +1,80 @@
+ <!-- ASK AI BUTTON -->
+ <button class="btn d-md-block rounded-pill expanded askAIbtn" id="chatOpen">
+    <span class="askAIicon"><i class="bi bi-stars"></i></span>
+    <span class="askAItitle">Ask AI</span>
+</button>
+<!-- ASK AI BUTTON ENDS HERE -->
+
+<!-- Chat Popup Window -->
+<div id="chatPopup" class="chat-popup">
+    <div class="chat-header">
+        <span class="fs-6">Chat with us!</span>
+        <button id="chatClose" class="close-btn">&times;</button>
+    </div>
+    <div id="chat-body" class="chat-body">
+        <!-- Chat messages can go here -->
+        <div class="chat-msg-container">
+            <img src="/assets/chat-bot-icon.webp" alt="Assistant" class="chatbot-img">
+            <p class="AImsg">Hello! I'm Health Bot at DocLink, here to assist you with any health-related concerns. Feel free to ask about symptoms, doctors, remedies or general well-being!</p>
+        </div>
+
+        <!-- <div class="user-msg-container d-flex justify-content-end">
+            <p class="Usermsg">Hello! Im User</p>
+        </div> -->
+        
+    </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Type your message..." id="chatInput" />
+        <button id="sendBtn"><i class="bi bi-send-fill fs-5"></i></button>
+    </div>
+</div>
+
+<script>
+document.getElementById('sendBtn').addEventListener('click', sendMessage);
+
+document.getElementById('chatInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+async function sendMessage() {
+event.preventDefault();
+const userInput = document.getElementById('chatInput').value;
+
+const chatBody = document.getElementById('chat-body')
+const userMsgContainer = document.createElement("div");
+userMsgContainer.classList.add("user-msg-container", "d-flex", "justify-content-end");
+const userMsg = document.createElement("p");
+userMsg.classList.add("Usermsg");
+userMsg.innerText = userInput;
+userMsgContainer.appendChild(userMsg);
+chatBody.appendChild(userMsgContainer);
+document.getElementById("chatInput").value = "";
+
+
+
+const response = await fetch('/api/run', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ input: userInput }),
+});
+const data = await response.json();
+const botMsgContainer = document.createElement("div");
+botMsgContainer.classList.add("chat-msg-container");
+const botMsg = document.createElement("p");
+const botLogo = document.createElement('img');
+botLogo.src = '/assets/chat-bot-icon.webp';
+botLogo.classList.add('chatbot-img');
+botMsg.classList.add("AImsg");
+botMsg.innerText = data.output;
+botMsgContainer.appendChild(botLogo);
+botMsgContainer.appendChild(botMsg);
+chatBody.appendChild(botMsgContainer);
+
+chatBody.scrollTop = chatBody.scrollHeight;
+
+};
+</script>
