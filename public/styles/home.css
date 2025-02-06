@@ -179,7 +179,7 @@
     margin-top: 20px;
 }
 
-#askAIbtn {
+.askAIbtn {
     height: 50px;
     width: 50px;
     position: fixed;
@@ -199,14 +199,14 @@
     border-radius: 50rem;
 }
 
-#askAIbtn .askAItitle {
+.askAIbtn .askAItitle {
     white-space: nowrap;
     margin-left: 8px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-#askAIbtn:hover {
+.askAIbtn:hover {
     width: 120px;
     border: 2px solid transparent;
     background-image: 
@@ -216,11 +216,11 @@
     background-clip: padding-box, border-box;
     }
 
-#askAIbtn:hover .askAItitle {
+.askAIbtn:hover .askAItitle {
     opacity: 1;
 }
 
-#askAIbtn:hover .bi-stars::before {
+.askAIbtn:hover .bi-stars::before {
     padding-top: 0px;
 }
 
@@ -229,7 +229,7 @@
 }
 
 @media(max-width:768px) {
-    #askAIbtn.expanded {
+    .askAIbtn.expanded {
         width: 120px;
         border: 2px solid transparent;
         background-image: 
@@ -239,7 +239,7 @@
         background-clip: padding-box, border-box;
     }
     
-    #askAIbtn.expanded .askAItitle {
+    .askAIbtn.expanded .askAItitle {
         opacity: 1;
     }
 
@@ -367,6 +367,7 @@
 .AImsg {
     display: inline-block;
     padding: 5px;
+    padding-left: 10px;
     border-radius: 5px;
     background-color: #C292C8;
     max-width: 85%;
