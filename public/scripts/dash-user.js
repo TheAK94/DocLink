@@ -21,3 +21,20 @@ dashboardBtn.addEventListener('click', () => {
 profileBtn.addEventListener('click', () => {
   showSection(profileSection);
 });
+
+
+const chatPopup = document.getElementById('chatPopup');
+const chatOpen = document.getElementById('chatOpen');
+const chatClose = document.getElementById('chatClose');
+
+// Show the chat popup when the Chat button is clicked
+chatOpen.addEventListener('click', () => {
+  chatPopup.style.display = 'flex'; // Using flex because our chat container is a flex container
+  chatOpen.classList.add('hidden');
+});
+
+// Hide the chat popup when the Close button is clicked
+chatClose.addEventListener('click', () => {
+  chatPopup.style.display = 'none';
+  chatOpen.classList.remove('hidden');
+});
