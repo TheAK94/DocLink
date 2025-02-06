@@ -256,13 +256,16 @@
   }
 
 
-  .chat-popup {
+.chat-popup {
     position: fixed;
     bottom: 80px;
     right: 20px;
     width: 360px;
     max-height: 450px;
     background-color: #E1C9E4;
+    color: #292929;
+    /* background-color: #f5deb3;
+    background-color: #692CA5; */
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -370,6 +373,8 @@
     padding-left: 10px;
     border-radius: 5px;
     background-color: #C292C8;
+    /* background-color: #8e2c9b; */
+    /* background-color: #f5deb3; */
     max-width: 85%;
     word-break: break-word;
     white-space: normal;
@@ -378,7 +383,8 @@
     display: inline-block;
     padding: 5px;
     border-radius: 5px;
-    background-color: #C292C8;
+    background-color: #f5deb3;
+    color: #200f7c;
     max-width: 85%;
     word-break: break-word;
     white-space: normal;
