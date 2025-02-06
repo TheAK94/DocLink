@@ -254,3 +254,131 @@
     position: absolute;
     animation: moveToRight 2s forwards; /* Duration: 2 seconds, stays at the final position */
   }
+
+
+  .chat-popup {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 360px;
+    max-height: 450px;
+    background-color: #E1C9E4;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    z-index: 1000;
+}
+  
+.chat-header {
+    color: black;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.close-btn {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+  
+.chat-body {
+    padding: 10px;
+    overflow-y: auto;
+    flex: 1;
+}
+  
+.chat-footer {
+    display: flex;
+    padding: 10px;
+}
+  
+.chat-footer input {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid #707070;
+    background-color: #E1C9E4;
+}
+.chat-footer input:focus-visible {
+    outline: none;
+}
+  
+.chat-footer button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    background-color: #E1C9E4;
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.chat-footer button:hover {
+    background-color: #d8b3dd;
+}
+  
+.chat-open-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+.chat-msg-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    max-width: 85%; 
+}
+
+.chatbot-img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc; 
+}
+
+.chat-msg-container:not(.d-flex.justify-content-end) {
+    gap: 10px;
+}
+.user-msg-container {
+    justify-content: flex-end;
+}
+
+.AImsg {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #C292C8;
+    max-width: 85%;
+    word-break: break-word;
+    white-space: normal;
+}
+.Usermsg {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #C292C8;
+    max-width: 85%;
+    word-break: break-word;
+    white-space: normal;
+}

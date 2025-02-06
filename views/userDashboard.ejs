@@ -108,11 +108,35 @@
 
 
         <!-- ASK AI BUTTON -->
-        <button class="btn d-md-block rounded-pill expanded" id="askAIbtn">
+        <button class="btn d-md-block rounded-pill expanded askAIbtn" id="chatOpen">
             <span class="askAIicon"><i class="bi bi-stars"></i></span>
             <span class="askAItitle">Ask AI</span>
         </button>
         <!-- ASK AI BUTTON ENDS HERE -->
+        
+        <!-- Chat Popup Window -->
+        <div id="chatPopup" class="chat-popup">
+            <div class="chat-header">
+                <span class="fs-6">Chat with us!</span>
+                <button id="chatClose" class="close-btn">&times;</button>
+            </div>
+            <div class="chat-body">
+                <!-- Chat messages can go here -->
+                <div class="chat-msg-container">
+                    <img src="/assets/chat-bot-icon.webp" alt="Assistant" class="chatbot-img">
+                    <p class="AImsg">Hello! How can we help you today? Hello! How can we help you today?Hello! How can we help you today?Hello! How can we help you today?</p>
+                </div>
+
+                <div class="user-msg-container d-flex justify-content-end">
+                    <p class="Usermsg">Hello! How can we help you today? is Hello! H help you today?  can we help you today?</p>
+                </div>
+                
+            </div>
+            <div class="chat-footer">
+                <input type="text" placeholder="Type your message..." id="chatInput" />
+                <button id="sendBtn"><i class="bi bi-send-fill fs-5"></i></button>
+            </div>
+        </div>
          
         <%- include('./partials/pushMessage.ejs') %>
 
