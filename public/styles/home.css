@@ -75,14 +75,14 @@
     right: 20px;
     color: white;
     background-color: rgb(255, 156, 42);
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    z-index: 1000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .fixed-bottom-right:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     color: #0087ad;
     background-color: rgb(255, 156, 42);
 }
@@ -128,11 +128,11 @@
 }
 
 .responsive-text {
-    font-size: 0.9rem; /* Base font-size for extra small devices */
+    font-size: 0.9rem;
     font-weight: 400;
 }
 
-@media (min-width: 576px) { /* Small devices */
+@media (min-width: 576px) {
     .responsive-text {
         font-size: 1.1rem;
     }
@@ -249,10 +249,9 @@
     }
 } 
 
-/* push message style  */
 .moveRight {
     position: absolute;
-    animation: moveToRight 2s forwards; /* Duration: 2 seconds, stays at the final position */
+    animation: moveToRight 2s forwards;
   }
 
 

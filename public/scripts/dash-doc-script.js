@@ -49,8 +49,7 @@ saveBtn.addEventListener('click', () => {
     if (field === 'speciality') {
       const select = span.querySelector('select');
       const value = select.value;
-      span.innerText = value;  // Update the displayed value
-      // Optionally update the data attribute with the new value
+      span.innerText = value;
       span.dataset.original = value;
     } else {
       const input = span.querySelector('input');
@@ -66,15 +65,12 @@ saveBtn.addEventListener('click', () => {
 });
 
 returnBtn.addEventListener('click', () => {
-  // Revert to original values stored in data attributes
   fields.forEach(field => {
     const span = document.getElementById(field);
-    // Use the stored original value
     const originalValue = span.dataset.original;
     span.innerText = originalValue;
   });
 
-  // Hide Save and Return buttons, show Edit button
   editControls.style.display = 'none';
   editBtn.style.display = 'block';
 });
@@ -82,7 +78,7 @@ returnBtn.addEventListener('click', () => {
 
 
 
-// Grab the buttons and sections
+// Navbar Buttons
 const dashboardBtn = document.getElementById('dashboardBtn');
 const profileBtn = document.getElementById('profileBtn');
 const dashboardSection = document.getElementById('dashboard');
@@ -175,12 +171,10 @@ flatpickr("#slotTime", {
   noCalendar: true,
   dateFormat: "H:i",
   time_24hr: true, // Use 24-hour format or remove for AM/PM
-  minuteIncrement: 30 // This enforces half-hour intervals
+  minuteIncrement: 30
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Get today's date in the format YYYY-MM-DD
   const today = new Date().toISOString().split('T')[0];
-  // Set the min attribute for the date input
   document.getElementById('slotDate').setAttribute('min', today);
 });

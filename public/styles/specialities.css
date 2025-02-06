@@ -75,14 +75,14 @@
     right: 20px;
     color: white;
     background-color: rgb(255, 156, 42);
-    z-index: 1000; /* Ensure it stays above other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .fixed-bottom-right:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     color: #0087ad;
     background-color: rgb(255, 156, 42);
 }
@@ -174,8 +174,8 @@ h2 {
     justify-content: center;
     gap: 20px;
     padding: 20px;
-    max-width: 1200px; /* Limit the maximum width for better alignment */
-    margin: 0 auto; /* Center the container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .specialty-box {
@@ -184,7 +184,7 @@ h2 {
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
-    width: calc(25% - 20px); /* 4 boxes per row (25% width minus gap) */
+    width: calc(25% - 20px);
     height: 200px;
     display: flex;
     align-items: center;

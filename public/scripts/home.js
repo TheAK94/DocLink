@@ -1,21 +1,16 @@
 // Function to handle role selection
 function selectRole(role) {
-    // Set the hidden input fields with the selected role for both forms
     document.getElementById('roleInput').value = role;
     document.getElementById('roleInputRegister').value = role;
     
-    // Update the modal title with the chosen role (capitalize first letter)
     document.getElementById('roleLabel').textContent =
       role.charAt(0).toUpperCase() + role.slice(1);
     
-    // Check if the selected role is 'admin'
     if (role === 'admin') {
-        // For admin, show only the login form and hide the register toggle link
         document.getElementById('loginForm').style.display = 'block';
         document.getElementById('registerForm').style.display = 'none';
         document.getElementById('toggleFormText').style.display = 'none';
     } else {
-        // For non-admin roles, show the login form with the toggle text
         document.getElementById('loginForm').style.display = 'block';
         document.getElementById('registerForm').style.display = 'none';
         document.getElementById('toggleFormText').style.display = 'block';
@@ -23,12 +18,10 @@ function selectRole(role) {
             "Don't have an account? <a href='#' id='toggleFormLink' onclick='toggleForms(event)'>Register here</a>";
     }
     
-    // Hide the role selection section and show the authentication section
     document.getElementById('roleSelection').style.display = 'none';
     document.getElementById('authSection').style.display = 'block';
 }
   
-  // Function to toggle between login and register forms
 function toggleForms(event) {
     event.preventDefault();
     
@@ -51,31 +44,30 @@ function toggleForms(event) {
     }
 }
   
-  // Get the modal element
-  const loginModalEl = document.getElementById('loginModal');
-  
-  // Listen for when the modal is fully hidden to reset its state
+// Login/Register Modal
+const loginModalEl = document.getElementById('loginModal');
+
+// Listen for when the modal is fully hidden to reset its state
 loginModalEl.addEventListener('hidden.bs.modal', function () {
-    // Reset to the initial state: show role selection and hide the auth section
     document.getElementById('roleSelection').style.display = 'block';
     document.getElementById('authSection').style.display = 'none';
     
-    // Reset the forms: show the login form and hide the register form
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('registerForm').style.display = 'none';
     
-    // Reset the toggle text to the default
     document.getElementById('toggleFormText').innerHTML =
       "Don't have an account? <a href='#' id='toggleFormLink' onclick='toggleForms(event)'>Register here</a>";
 });
 
+
+// Chat Function
 const chatPopup = document.getElementById('chatPopup');
 const chatOpen = document.getElementById('chatOpen');
 const chatClose = document.getElementById('chatClose');
 
 // Show the chat popup when the Chat button is clicked
 chatOpen.addEventListener('click', () => {
-  chatPopup.style.display = 'flex'; // Using flex because our chat container is a flex container
+  chatPopup.style.display = 'flex';
   chatOpen.classList.add('hidden');
 });
 
