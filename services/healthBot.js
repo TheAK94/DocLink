@@ -1,7 +1,9 @@
  import { GoogleGenerativeAI } from "@google/generative-ai";
+ import dotenv from 'dotenv'
+ dotenv.config()
 //  import datasets from './datasets.js'
-  const apiKey = process.env.GEMINI_API_KEY || 'AIzaSyAt2XY-J7LONufGOzpPnDWtVgJAf9ZRjfE';
-  const genAI = new GoogleGenerativeAI("AIzaSyAt2XY-J7LONufGOzpPnDWtVgJAf9ZRjfE");
+  const apiKey = process.env.GEMINI_API_KEY;
+  const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash-exp",
