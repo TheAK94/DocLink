@@ -99,19 +99,19 @@ body {
 
 #days {
     display: flex;
-    gap: 8px; /* Adjust space between buttons */
-    flex-wrap: nowrap; /* Ensure all buttons are in one row */
-    overflow-x: auto; /* Enables scrolling if too many buttons */
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 #days button {
-    width: 40px;  /* Fixed width */
-    height: 50px; /* Fixed height */
+    width: 40px;
+    height: 50px;
     text-align: center;
-    padding: 5px 0; /* Adjust padding */
+    padding: 5px 0;
     line-height: 1.2;
-    border-radius: 10px; /* Rounded corners */
-    white-space: nowrap; /* Prevents text from wrapping */
+    border-radius: 10px;
+    white-space: nowrap;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,9 +119,9 @@ body {
 }
 
 #days button span {
-    font-size: 10px; /* Adjust font size for better fit */
+    font-size: 10px;
     font-weight: 600;
-    display: block; /* Ensures text stays inside the button */
+    display: block;
 }
 
 #card-wid {
@@ -133,7 +133,7 @@ body {
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
-    width: 250px; /* Adjust as needed */
+    width: 250px;
     display: flex;
 }
 
@@ -144,7 +144,7 @@ body {
 }
 
 #timeSlots button {
-    min-width: 30px; /* Fixed size */
+    min-width: 30px;
     height: 30px;
     text-align: center;
     border-radius: 10px;
@@ -174,7 +174,7 @@ body {
 /* Hide Scrollbar for Firefox */
 #timeContainer {
     scrollbar-width: none;
-    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    -ms-overflow-style: none;
 }
 
 .appoint-btn {

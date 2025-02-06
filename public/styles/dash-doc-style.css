@@ -22,7 +22,6 @@
     background-color: rgb(255, 65, 65);
 }
 
-    /* plus sign */
 .sign {
     width: 100%;
     transition-duration: .3s;
@@ -38,7 +37,7 @@
 .sign svg path {
     fill: white;
 }
-    /* text */
+
 .text {
     position: absolute;
     right: 0%;
@@ -49,7 +48,7 @@
     font-weight: 600;
     transition-duration: .3s;
 }
-    /* hover effect on button width */
+
 .Btn:hover {
     width: 125px;
     border-radius: 40px;
@@ -61,14 +60,14 @@
     transition-duration: .3s;
     padding-left: 20px;
 }
-    /* hover effect button's text */
+ 
 .Btn:hover .text {
     opacity: 1;
     width: 70%;
     transition-duration: .3s;
     padding-right: 10px;
 }
-    /* button click effect*/
+
 .Btn:active {
     transform: translate(2px ,2px);
 }
@@ -127,7 +126,6 @@
 } */
 
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .doctor-profile {
         text-align: center;
@@ -149,4 +147,64 @@
 
 .fs-7 {
     font-size: 0.85rem;
+}
+
+
+.appointment-history {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+.appointment-history h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+.appointment-record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+  
+.appointment-record:last-child {
+    border-bottom: none;
+}
+  
+.record-date {
+    flex-shrink: 0;
+    width: 120px;
+    font-weight: bold;
+    text-align: left;
+}
+  
+.record-time {
+    font-size: 0.85em;
+    color: #666;
+}
+  
+.record-details {
+    flex: 1;
+    padding-left: 20px;
+}
+  
+.record-details h3 {
+    margin: 0;
+    font-size: 1.1em;
+}
+  
+.record-details p {
+    margin: 5px 0 0;
+    font-size: 0.95em;
+    color: #555;
+}
+  
+.appointment-history {
+    max-height: 600px;
+    overflow-y: auto;
 }
