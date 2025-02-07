@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbox - DocLink</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/styles/symptomBot.css">
+<link rel="stylesheet" href="/styles/healthbot.css">
+
+</head>
+<body>
+   <%-include('./partials/navbar-user.ejs');%>
+    <!-- CHATBOT INTERFACE -->
+    <div class="chat-header">
+        <span class="fs-6"><h2>Symptom Checker!</h2></span>
+        <!-- <button id="chatClose" class="close-btn">&times;</button> -->
+    </div>
+    <div id="chat-body" class="chat-body">
+        <!-- Chat messages can go here -->
+        <div class="chat-msg-container">
+            <img src="/assets/chat-bot-icon.webp" alt="Assistant" class="chatbot-img">
+            <p class="AImsg">Hello! I'm your AI health assistant. Please describe your symptoms, and I'll help you understand your condition.</p>
+        </div>
+
+        <div class="user-msg-container d-flex justify-content-end">
+            <p class="Usermsg">Example: Swollen ankles, shortness of breath, fatigue</p>
+        </div>
+        <div class="chat-msg-container">
+            <img src="/assets/chat-bot-icon.webp" alt="Assistant" class="chatbot-img">
+            <p class="AImsg">Predicted Condition: Heart Failure | Suggested Doctor: Cardiologist | Home Remedy: Limit salt intake, elevate legs while resting, monitor fluid intake. *Urgent*: Seek immediate medical attention if severe chest pain develops.</p>
+        </div>
+        
+    </div>
+    <div class="chat-footer">
+        <input type="text" placeholder="Type your message..." id="chatInput" />
+        <button id="sendBtn"><i class="bi bi-send-fill fs-5"></i></button>
+    </div>
+</div>
+
+<script>
+document.getElementById('sendBtn').addEventListener('click', sendMessage);
+
+document.getElementById('chatInput').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        sendMessage();
+    }
+});
+async function sendMessage() {
+event.preventDefault();
+const userInput = document.getElementById('chatInput').value;
+
+const chatBody = document.getElementById('chat-body')
+const userMsgContainer = document.createElement("div");
+userMsgContainer.classList.add("user-msg-container", "d-flex", "justify-content-end");
+const userMsg = document.createElement("p");
+userMsg.classList.add("Usermsg");
+userMsg.innerText = userInput;
+userMsgContainer.appendChild(userMsg);
+chatBody.appendChild(userMsgContainer);
+document.getElementById("chatInput").value = "";
+
+
+
+const response = await fetch('/api/run2', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ input: userInput }),
+});
+const data = await response.json();
+const botMsgContainer = document.createElement("div");
+botMsgContainer.classList.add("chat-msg-container");
+const botMsg = document.createElement("p");
+const botLogo = document.createElement('img');
+botLogo.src = '/assets/chat-bot-icon.webp';
+botLogo.classList.add('chatbot-img');
+botMsg.classList.add("AImsg");
+botMsg.innerText = data.output;
+botMsgContainer.appendChild(botLogo);
+botMsgContainer.appendChild(botMsg);
+chatBody.appendChild(botMsgContainer);
+
+setTimeout(() => {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 50);
+};
+</script>
+</body>
+</html>

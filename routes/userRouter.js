@@ -207,7 +207,7 @@ router.get('/bookAppointments/search', checkAuth,
 //       }
 //     }
 // );
-router.get('/bookAppointments/filter', checkAuth, async (req, res) => {
+router.get('/bookAppointments/filter', async (req, res) => {
     try {
         const user = req.user;
         const flag = req.cookies?.flag || 100;

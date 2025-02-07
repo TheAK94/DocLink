@@ -4,6 +4,7 @@ dotenv.config();
 import cookieParser from 'cookie-parser';
 
 import run from './services/healthBot.js'
+import run2 from './services/symptomBot.js'
 import userRoute from './routes/userRouter.js';
 import doctorRoute from './routes/doctorRoute.js';
 import connectDB from './controllers/configDB.js';
@@ -40,7 +41,23 @@ app.post('/api/run', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+app.post('/api/run2', async (req, res) => {
+    const { input } = req.body; 
 
+    try {
+        const result = await run2(input);
+        res.json({ output: result }); 
+    } catch (error) {
+        console.error('Error running the health bot:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+app.get('/speciality', async (req, res) => {
+    res.render('specialities_page');
+});
+app.get('/symptomBot', async (req, res) => {
+    res.render('symptomBot');
+});
 app.use('/user',userRoute);
 app.use('/doctor',doctorRoute);
 

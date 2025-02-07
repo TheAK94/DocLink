@@ -21,12 +21,12 @@ router.route('/signup')
 
 //profile routee
 router.route('/profile/:id')
-.get(checkAuthDoctor, async (req,res)=>{
+.get(async (req,res)=>{
     try{
-    const currentDoctor = await Doctor.findOne({id : req.params._id});
+    const currentDoctor = await Doctor.findOne({_id : req.params.id});
     
     if (!currentDoctor) {
-        return res.status(404).send("User not found");
+        return res.status(404).send("Doctor not found");
     }
 
     res.render('doctor/doctorProfile', {doctor: currentDoctor});
@@ -92,7 +92,7 @@ router.route('/logout')
 router.post('/remove-slot/:index', checkAuthDoctor, async (req,res)=>{
     try{
         const {index} = req.params;
-        const currentDoctor = await Doctor.findOne({id:req.doctor.id});
+        const currentDoctor = await Doctor.findOne({_id:req.doctor._id});
         if(!currentDoctor){
             console.log("You are not logged in");
             return res.status(400).send("You are not logged in");

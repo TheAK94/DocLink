@@ -81,7 +81,7 @@
                             <div class="col">
                                 <div class="card h-100 appointment-card mx-auto">
                                     <div class="card-body text-center">
-                                        <h3 class="card-title">Patient Name: <%= slot.user %> </h3>
+                                        <h3 class="card-title">Patient: <%= slot.user %> </h3>
                                         <p class="card-text">Date: <%= slot.date %>  |  Time: <%= slot.time %></p>
                                         <div class="d-flex justify-content-evenly">
                                             <a href="/user/profile/<%= slot.userId %>"><div class="btn btn-primary fs-7">Patient Info</div></a>
@@ -255,9 +255,11 @@
                                     <p class="card-text">Date: <%= slot.date %></p>
                                     <p class="card-text">Time: <%= slot.time %></p>
                                     <div class="d-flex justify-content-evenly">
-                                        <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelSlot">
-                                            <form action="/doctor/remove-slot/<%= index %>" method="post"><button type="submit">Remove this Slot</button></form>
-                                        </div>
+                                        <form action="/doctor/remove-slot/<%= index %>" method="post">
+                                        <button type="submit" class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelSlot">
+                                            Remove this Slot
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>

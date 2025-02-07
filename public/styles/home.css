@@ -259,8 +259,8 @@
     position: fixed;
     bottom: 80px;
     right: 20px;
-    width: 360px;
-    max-height: 450px;
+    width: 480px;
+    max-height: 550px;
     background-color: #E1C9E4;
     color: #292929;
     /* background-color: #f5deb3;
@@ -271,6 +271,12 @@
     display: none;
     flex-direction: column;
     z-index: 1000;
+}
+@media(max-width:768px) {
+    .chat-popup {
+        width: 360px;
+        max-height: 450px;
+    }
 }
   
 .chat-header {
