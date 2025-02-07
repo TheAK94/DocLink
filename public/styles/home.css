@@ -388,3 +388,87 @@
     word-break: break-word;
     white-space: normal;
 }
+
+.specialties h2 {
+    color: #343a40;
+    font-weight: 700;
+}
+  
+.specialties p {
+    font-size: 1rem;
+}
+
+.specialty-link {
+    color: #007bff;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+  
+.specialty-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+  
+.view-more-btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.doctor-image img {
+    border: 2px solid #fff;
+}
+  
+/* Chatbot Intro Section Styling */
+.chatbot-intro {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+}
+  
+.chatbot-intro h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+  
+.chatbot-intro p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+  
+#openChatBtn {
+    border-radius: 25px;
+    padding: 10px 25px;
+    transition: background-color 0.3s ease;
+  }
+  
+#openChatBtn:hover {
+    background-color: #0056b3;
+}
+  
+ @media (max-width: 768px) {
+    .chatbot-intro h2 {
+      font-size: 2rem;
+    }
+    .chatbot-intro p {
+      font-size: 1rem;
+    }
+}
+
+.chatbot-sec-img {
+    max-width: 100%;
+    height: 400px; 
+    width: 400px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+    .chatbot-img {
+      min-width: 200px;
+      height: auto;
+    }
+}

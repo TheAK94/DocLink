@@ -208,3 +208,9 @@
     max-height: 600px;
     overflow-y: auto;
 }
+
+@media(max-width:576px) {
+    .appointment-card {
+        width: 250px;
+    }
+}
