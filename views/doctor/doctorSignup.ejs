@@ -24,7 +24,7 @@
         <div class="card card-signup shadow">
           <div class="card-body py-5 px-4">
             <h2 class="text-center mb-4">Register - Doctor</h2>
-            <form action="/doctor/signup" method="post" enctype="multipart/form-data">
+            <form action="/doctor/signup" method='post'>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="firstName">First Name</label>
@@ -49,7 +49,10 @@
                   <option value="gynecologist">Gynecologist</option>
                   <option value="psychiatrist">Psychiatrist</option>
                 </select>
+                <input type="number" min="1" max="70" step="1" name="experience" class="form-control mt-2" placeholder="Experience (in years)" required>
               </div>
+
+              
               
               <div class="form-group">
                 <label for="email">Email Address</label>
@@ -63,7 +66,7 @@
               
               <div class="form-group">
                 <label for="profileImage">Upload Profile Image</label>
-                <input type="file" name="profileImage" id="profileImage" class="form-control-file">
+                <input type="file" name="profileImage" id="profileImage" class="form-control" preview="profileImagePreview">
               </div>
               
               <button type="submit" class="btn btn-success btn-block mt-4">Sign Up</button>
