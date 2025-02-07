@@ -1,3 +1,5 @@
+<a href="https://weekendofcode.computercodingclub.in/"> <img src="https://i.postimg.cc/njCM24kx/woc.jpg" height=30px> </a>
+
 # DocLink
 
 **DocLink** is a comprehensive healthcare platform designed to simplify the way patients book appointments and connect with doctors. The main motive of DocLink is to streamline appointment scheduling and booking through an intuitive interface, while also offering additional features such as separate logins for doctors and users, and an AI-powered chatbot for quick assistance—all built with a responsive design that works seamlessly across devices.
@@ -5,13 +7,14 @@
 ## Table of Contents
 
 - [Features](#features)
+- [Technology Stack](#technology-stack)
 - [Project Overview](#project-overview)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Customization](#customization)
 - [Contributing](#contributing)
 - [License](#license)
-- [Contact](#contact)
+- [Contributors](#contributors)
 
 ## Features
 
@@ -26,6 +29,13 @@
 
 - **Responsive Design:**  
   Every page—whether it's the login form, appointment management, or the AI chatbot interface—is designed to be fully responsive, ensuring a smooth user experience on desktops, tablets, and smartphones.
+
+
+## Technology-Stack:
+  1) HTML, JavaScript
+  2) BootStrap CSS
+  3) NodeJS, ExpressJS
+  4) MongoDB
 
 ## Project Overview
 
@@ -107,7 +117,7 @@
 ## Project Structure
 
 ```
-|-- undefined
+|-- DocLink
     |-- .env
     |-- .gitignore
     |-- app.js
@@ -198,10 +208,15 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## Contact
+## Contributors
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 | [<img src="https://github.com/TheAK94.png" width="100px;"/><br /><sub><b>Atharva</b></sub>](https://github.com/TheAK94) | [<img src="https://github.com/ankit-3131.png" width="100px;"/><br /><sub><b>Ankit</b></sub>](https://github.com/ankit-3131) | [<img src="https://github.com/Sachit0CS.png" width="100px;"/><br /><sub><b>Sachit</b></sub>](https://github.com/Sachit0CS) |
 | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
+### Made at:
+
+<a href="https://weekendofcode.computercodingclub.in/"> <img src="https://i.postimg.cc/Z9fC676j/devjam.jpg" height=30px> </a>
