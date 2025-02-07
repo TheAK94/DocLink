@@ -16,7 +16,7 @@
             <a class="navbar-brand fs-2" href="#">DocLink</a>
             <div class="d-flex">
                 <div class="btn me-2 nav-btn" id="dashboardBtn">
-                    <div class="d-flex"><i class="bi bi-house me-2"></i><span class="d-none d-sm-block">Home</span>
+                    <div class="d-flex"><i class="bi bi-house me-2"></i><span class="d-none d-sm-block">Dashboard</span>
                     </div>
                 </div>
                 <div class="btn me-2 nav-btn" id="profileBtn">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="btn me-2 nav-btn" id="editSlotsBtn">
-                    <div class="d-flex"><i class="bi bi-calendar-event me-2"></i><span class="d-none d-sm-block">Edit Slots</span>
+                    <div class="d-flex"><i class="bi bi-calendar-event me-2"></i><span class="d-none d-sm-block">Manage your Slots</span>
                     </div>
                 </div>
                 <div class="btn me-2 nav-btn" id="apptHistBtn">
@@ -77,6 +77,36 @@
 
                 <% if (doctor.bookedSlots && doctor.bookedSlots.length > 0) { %>
                     <% doctor.bookedSlots.forEach((slot)=>{ %>
+                        <% if (slot.date == todayDate) { %>
+                            <div class="col">
+                                <div class="card h-100 appointment-card mx-auto">
+                                    <div class="card-body text-center">
+                                        <h3 class="card-title">Patient Name: <%= slot.user %> </h3>
+                                        <p class="card-text">Date: <%= slot.date %>  |  Time: <%= slot.time %></p>
+                                        <div class="d-flex justify-content-evenly">
+                                            <a href="/user/profile/<%= slot.userId %>"><div class="btn btn-primary fs-7">Patient Info</div></a>
+                                            <a href="/doctor/cancel-appointment/<%= slot.userId %>/<%= slot.date %>/<%= slot.time %>"><div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="">Cancel</div></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        <% }) %>
+                <% } else { %>
+                    <h4>No slots available</h4>
+                <% } %>
+                
+              
+        
+            </div>
+        </div>
+      
+        <div id="page2" class="appointment-page" style="display: none;">
+            <h2 class="text-center mb-4" style="color: #0087ad;">Other Appointments</h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
+                <% if (doctor.bookedSlots && doctor.bookedSlots.length > 0) { %>
+                    <% doctor.bookedSlots.forEach((slot)=>{ %>
+                        <% if (slot.date != todayDate) { %>
                         <div class="col">
                             <div class="card h-100 appointment-card mx-auto">
                                 <div class="card-body text-center">
@@ -89,62 +119,16 @@
                                 </div>
                             </div>
                         </div>
+                        <% } %>
                     <% }) %>
                 <% } else { %>
                     <h4>No slots available</h4>
                 <% } %>
-                
-              
-        
-            </div>
-        </div>
-      
-        <div id="page2" class="appointment-page" style="display: none;">
-            <h2 class="text-center mb-4" style="color: #0087ad;">Tomorrow's Appointments</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
-                <div class="col">
-                    <div class="card h-100 appointment-card">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">John Doe</h3>
-                            <p class="card-text">Time: 10:00 AM</p>
-                            <div class="d-flex justify-content-evenly">
-                                <div class="btn btn-primary fs-7">View Profile</div>
-                                <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 appointment-card">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">John Doe</h3>
-                            <p class="card-text">Time: 10:00 AM</p>
-                            <div class="d-flex justify-content-evenly">
-                                <div class="btn btn-primary fs-7">View Profile</div>
-                                <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
         <div id="page3" class="appointment-page" style="display: none;">
-            <h2 class="text-center mb-4" style="color: #0087ad;">Appointments on (dd-mm-yy)</h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-2">
-                <div class="col">
-                    <div class="card h-100 appointment-card">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">John Doe</h3>
-                            <p class="card-text">Time: 10:00 AM</p>
-                            <div class="d-flex justify-content-evenly">
-                                <div class="btn btn-primary fs-7">View Profile</div>
-                                <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
       
         <!-- PAGINATION NAVIGATION -->
@@ -155,9 +139,9 @@
                     <span>&laquo;</span>
                 </a>
                 </li>
-                <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
-                <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
-                <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+                <li class="page-item active"><a class="page-link" href="#" data-page="1">Today's Appointments</a></li>
+                <li class="page-item"><a class="page-link" href="#" data-page="2">Other Appointments</a></li>
+                <!-- <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li> -->
                 <li class="page-item" id="nextPage">
                 <a class="page-link" href="#">
                     <span>&raquo;</span>
@@ -241,7 +225,7 @@
     <!-- EDIT SLOTS SECTION -->
     <div class="container my-5 section" id="editSlots">
         <h2 class="text-center mb-4" style="color: #0087ad;">Add Slots</h2>
-        <form action="/doctor/dashboard" method="post" id="updateSlotsForm">
+        <form action="/doctor/add-slot" method="post" id="updateSlotsForm">
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="slotDate" class="form-label">Select Date</label>
