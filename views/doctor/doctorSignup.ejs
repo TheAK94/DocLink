@@ -1,104 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up page</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Doctor Sign Up</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .card-signup {
+      margin-top: 80px;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.85);
+      border: none;
+    }
+  </style>
 </head>
 <body>
-    <!-- Section: Design Block -->
-<section class="text-center">
-  <!-- Background image -->
-  <div class="p-5 bg-image" style="
-        background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
-        height: 300px;
-        "></div>
   <!-- Background image -->
 
-  <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary" style="
-        margin-top: -100px;
-        backdrop-filter: blur(30px);
-        ">
-    <div class="card-body py-5 px-md-5">
-
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-8">
-          <h2 class="fw-bold mb-5">Doctor, Sign up now</h2>
-          <form action="/doctor/signup" method="post">
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div data-mdb-input-init class="form-outline">
-                  <input name="firstName" type="text" id="form3Example1" class="form-control" />
-                  <label class="form-label" for="form3Example1">First name</label>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card card-signup shadow">
+          <div class="card-body py-5 px-4">
+            <h2 class="text-center mb-4">Register - Doctor</h2>
+            <form action="/doctor/signup" method="post" enctype="multipart/form-data">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="firstName">First Name</label>
+                  <input name="firstName" type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName">Last Name</label>
+                  <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name" required>
                 </div>
               </div>
-              <div class="col-md-6 mb-4">
-                <div data-mdb-input-init class="form-outline">
-                  <input name="lastName" type="text" id="form3Example2" class="form-control" />
-                  <label class="form-label" for="form3Example2">Last name</label>
-                </div>
+              
+              <div class="form-group">
+                <label for="speciality">Choose a Speciality</label>
+                <select id="speciality" name="speciality" class="form-control" required>
+                  <option value="">-- Select a Speciality --</option>
+                  <option value="general">General Physician</option>
+                  <option value="cardiologist">Cardiologist</option>
+                  <option value="dermatologist">Dermatologist</option>
+                  <option value="pediatrician">Pediatrician</option>
+                  <option value="orthopedic">Orthopedic</option>
+                  <option value="neurologist">Neurologist</option>
+                  <option value="gynecologist">Gynecologist</option>
+                  <option value="psychiatrist">Psychiatrist</option>
+                </select>
               </div>
-            </div>
-            
-            <label for="speciality">Choose a speciality:</label>
-            <select id="speciality" name="speciality">
-            <option value="">-- Select a Speciality --</option>
-            <option value="general">General Physician</option>
-            <option value="cardiologist">Cardiologist</option>
-            <option value="dermatologist">Dermatologist</option>
-            <option value="pediatrician">Pediatrician</option>
-            <option value="orthopedic">Orthopedic</option>
-            <option value="neurologist">Neurologist</option>
-            <option value="gynecologist">Gynecologist</option>
-            <option value="psychiatrist">Psychiatrist</option>
-            </select>
-
-            <!-- Email input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input name="email" type="email" id="form3Example3" class="form-control" />
-              <label class="form-label" for="form3Example3">Email address</label>
-            </div>
-
-            <!-- Password input -->
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input name="password" type="password" id="form3Example4" class="form-control" />
-              <label class="form-label" for="form3Example4">Password</label>
-            </div>
-            <div>
-              <input type="file" name="profileImage" id="form3Example5" class="form-control" />
-            </div>
-            <!-- Submit button -->
-            <button style="background-color: yellowgreen;" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
-              Sign up
-            </button>
-
-            <!-- Register buttons -->
-            <!-- <div class="text-center">
-              <p>or sign up with:</p>
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-facebook-f"></i>
-              </button>
-
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-google"></i>
-              </button>
-
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-twitter"></i>
-              </button>
-
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
-                <i class="fab fa-github"></i>
-              </button>
-            </div> -->
-          </form>
+              
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Enter your email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Enter your password" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="profileImage">Upload Profile Image</label>
+                <input type="file" name="profileImage" id="profileImage" class="form-control-file">
+              </div>
+              
+              <button type="submit" class="btn btn-success btn-block mt-4">Sign Up</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
-<!-- Section: Design Block -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" 
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaZ2Im5T5R5T2wgQ9W6a5dQGi" 
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" 
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy/9WLLx9QOV0tTwm5T0sB7+abVYUew+OrCXaRkfj" 
+          crossorigin="anonymous"></script>
 </body>
 </html>
