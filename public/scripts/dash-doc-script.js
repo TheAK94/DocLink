@@ -184,3 +184,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('slotDate').setAttribute('min', today);
 });
+
+
+// Function to open the Mark as Done modal and set the appointment ID
+function openMarkDoneModal(appointmentId) {
+  document.getElementById('appointmentId').value = appointmentId;
+
+  document.getElementById('remarks').value = '';
+
+  var markDoneModal = new bootstrap.Modal(document.getElementById('markDoneModal'));
+  markDoneModal.show();
+}
+
+function saveMarkDone() {
+  const appointmentId = document.getElementById('appointmentId').value;
+  const remarks = document.getElementById('remarks').value.trim();
+
+  if (remarks === '') {
+    alert('Please enter remarks before saving.');
+    return;
+  }
+
+  console.log(`Appointment ${appointmentId} marked as done with remarks: ${remarks}`);
+
+  const appointmentCard = document.getElementById(appointmentId);
+  if (appointmentCard) {
+    appointmentCard.classList.add('completed');
+    const btn = appointmentCard.querySelector('.btn-outline-success');
+    if (btn) {
+      btn.textContent = 'Done';
+      btn.disabled = true;
+    }
+  }
+
+  var markDoneModalEl = document.getElementById('markDoneModal');
+  var modalInstance = bootstrap.Modal.getInstance(markDoneModalEl);
+  modalInstance.hide();
+
+}

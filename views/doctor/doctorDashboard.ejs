@@ -78,10 +78,9 @@
                 <% if (doctor.bookedSlots && doctor.bookedSlots.length > 0) { %>
                     <% doctor.bookedSlots.forEach((slot)=>{ %>
                         <div class="col">
-                            <div class="card h-100 appointment-card">
+                            <div class="card h-100 appointment-card mx-auto">
                                 <div class="card-body text-center">
-
-                                    <h4 class="card-title">Patient Name: <%= slot.user %> </h4>
+                                    <h3 class="card-title">Patient Name: <%= slot.user %> </h3>
                                     <p class="card-text">Date: <%= slot.date %>  |  Time: <%= slot.time %></p>
                                     <div class="d-flex justify-content-evenly">
                                         <a href="/user/profile/<%= slot.userId %>"><div class="btn btn-primary fs-7">Patient Info</div></a>
@@ -95,9 +94,7 @@
                     <h4>No slots available</h4>
                 <% } %>
                 
-                
-                
-                
+              
         
             </div>
         </div>

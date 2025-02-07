@@ -1,4 +1,6 @@
- <!-- ASK AI BUTTON -->
+<link rel="stylesheet" href="/styles/healthbot.css">
+
+<!-- ASK AI BUTTON -->
  <button class="btn d-md-block rounded-pill expanded askAIbtn" id="chatOpen">
     <span class="askAIicon"><i class="bi bi-stars"></i></span>
     <span class="askAItitle">Ask AI</span>
@@ -74,7 +76,8 @@ botMsgContainer.appendChild(botLogo);
 botMsgContainer.appendChild(botMsg);
 chatBody.appendChild(botMsgContainer);
 
-chatBody.scrollTop = chatBody.scrollHeight;
-
+setTimeout(() => {
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 50);
 };
 </script>
