@@ -388,3 +388,35 @@
     word-break: break-word;
     white-space: normal;
 }
+
+.specialties h2 {
+    color: #343a40;
+    font-weight: 700;
+}
+  
+.specialties p {
+    font-size: 1rem;
+}
+
+.specialty-link {
+    color: #007bff;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+  
+.specialty-link:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+  
+.view-more-btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.doctor-image img {
+    border: 2px solid #fff;
+}
+  
