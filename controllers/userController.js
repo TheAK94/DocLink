@@ -1,10 +1,18 @@
 import User from '../models/userModel.js';
 import jwt from "jsonwebtoken"
 import { sendEmail } from '../services/sendMail.js';
+import bcrypt from 'bcrypt';
 
 async function handlerUserLogin(req, res) {
     const { email, password } = req.body;
-    const userIsThere = await User.findOne({ email, password });
+
+    const user = await User.findOne({ email: email });
+        if (!user) return res.render('signin', { message: 'Invalid email' });
+
+    const isValid = await bcrypt.compare(password, user.password);
+    if (!isValid) return res.render('signin', { message: 'Invalid password' });
+
+    const userIsThere = await User.findOne({ email });
     if (!userIsThere) {
         return res.status(401).send("either email or password is wrong");
     }

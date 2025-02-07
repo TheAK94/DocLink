@@ -1,10 +1,19 @@
 import Doctor from '../models/doctorModel.js';
 import jwt from "jsonwebtoken"
 import multer from 'multer';
+import bcrypt from 'bcrypt';
 
 async function handlerDoctorLogin(req, res) {
     const { email, password } = req.body;
-    const doctorIsThere = await Doctor.findOne({ email, password });
+
+    const doctor = await Doctor.findOne({ email: email });
+        if (!doctor) return res.render('signin', { message: 'Invalid email' });
+
+    const isValid = await bcrypt.compare(password, doctor.password);
+    if (!isValid) return res.render('signin', { message: 'Invalid password' });
+
+
+    const doctorIsThere = await Doctor.findOne({ email});
     if (!doctorIsThere) {
         return res.send("either email or password is wrong");
     }
