@@ -162,4 +162,88 @@ router.route('/profile/:id')
     }
 });
 
+router.get('/bookAppointments/search', checkAuth, 
+    async (req, res)=>{
+      try{
+        const user = req.user;
+        var flag = req.cookies?.flag || 100;
+        var content = req.cookies?.content || "Done!";
+        res.clearCookie('flag');
+        res.clearCookie('content');
+  
+        const searchTerm = req.query.searchTerm || "";
+        const allDoctors = await Doctor.find({$or : [{firstName: new RegExp (searchTerm, "i")}, {lastName: new RegExp (searchTerm, "i")}]});
+
+        var flag = req.cookies?.flag || 100;
+        var content = req.cookies?.content || "Done!";
+        res.clearCookie('flag');
+        res.clearCookie('content');
+        res.render('bookAppointments', {allDoctors: allDoctors,flag, content});
+      }catch(error){
+        console.log(`error in searching the note`,error);
+      }
+    }
+);
+// router.get('/bookAppointments/filter', checkAuth, 
+//     async (req, res)=>{
+//       try{
+//         const user = req.user;
+//         var flag = req.cookies?.flag || 100;
+//         var content = req.cookies?.content || "Done!";
+//         res.clearCookie('flag');
+//         res.clearCookie('content');
+  
+//         const searchTerm = req.query.speciality || "";
+//         console.log(searchTerm);
+//         const allDoctors = await Doctor.find({$or : [{speciality: new RegExp (searchTerm, "i")}]});
+
+//         var flag = req.cookies?.flag || 100;
+//         var content = req.cookies?.content || "Done!";
+//         res.clearCookie('flag');
+//         res.clearCookie('content');
+//         res.render('bookAppointments', {allDoctors: allDoctors,flag, content});
+//       }catch(error){
+//         console.log(`error in searching the note`,error);
+//       }
+//     }
+// );
+router.get('/bookAppointments/filter', checkAuth, async (req, res) => {
+    try {
+        const user = req.user;
+        const flag = req.cookies?.flag || 100;
+        const content = req.cookies?.content || "Done!";
+        res.clearCookie('flag');
+        res.clearCookie('content');
+
+        // Get filters from query parameters
+        const searchTerm = req.query.speciality || "";
+        const experienceRange = req.query.experience || "";
+
+        // Prepare MongoDB query object
+        let query = {};
+
+        // Add speciality filter if selected
+        if (searchTerm) {
+            query.speciality = new RegExp(searchTerm, "i");
+        }
+
+        // Add experience filter if selected
+        if (experienceRange) {
+            const [minExp, maxExp] = experienceRange.split('-');
+            if (maxExp) {
+                query.experience = { $gte: parseInt(minExp), $lte: parseInt(maxExp) };
+            } else if (experienceRange === "16+") {
+                query.experience = { $gte: 16 };
+            }
+        }
+
+        console.log("Search Query:", query);
+
+        const allDoctors = await Doctor.find(query);
+        res.render('bookAppointments', { allDoctors: allDoctors, flag, content });
+    } catch (error) {
+        console.log(`Error in searching doctors:`, error);
+    }
+});
+
 export default router;

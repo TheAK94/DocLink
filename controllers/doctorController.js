@@ -23,8 +23,9 @@ async function handlerDoctorLogin(req, res) {
 }
 
 async function handlerDoctorSignup(req, res) {
-    const { firstName, lastName, speciality, email, password } = req.body;
-   
+    const { firstName, lastName, speciality,experience, email, password } = req.body;
+    console.log(firstName, lastName, speciality, experience, email, password);
+    
     try {
         const checkExistingDoctor = await Doctor.findOne({ email });
         if(checkExistingDoctor){
@@ -34,6 +35,7 @@ async function handlerDoctorSignup(req, res) {
             firstName: firstName,
             lastName: lastName,
             speciality: speciality,
+            experience: experience,
             email: email,
             password: password
         });
