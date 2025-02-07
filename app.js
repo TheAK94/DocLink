@@ -30,11 +30,11 @@ app.get('/', async (req, res)=>{
 })
 
 app.post('/api/run', async (req, res) => {
-    const { input } = req.body; // Get user input from the request body
+    const { input } = req.body; 
 
     try {
-        const result = await run(input); // Call the run function with user input
-        res.json({ output: result }); // Send the result back to the client
+        const result = await run(input);
+        res.json({ output: result }); 
     } catch (error) {
         console.error('Error running the health bot:', error);
         res.status(500).json({ error: 'Internal Server Error' });

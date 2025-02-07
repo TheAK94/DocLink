@@ -142,6 +142,50 @@
         {text: "output: Sneak veggies into smoothies or sauces. Dietitian can help expand your food kingdom!"},
         {text: "input: my armpit has a lump"},
         {text: "output: Don’t panic—could be a cyst or swollen node. But get it checked ASAP. No DIY diagnoses!"},
+        {text: "input: i am not feeling well"},  
+{text: "output: Monitor symptoms like fever, fatigue, or pain. Rest and hydrate. If symptoms worsen or persist beyond 48 hours, consult a general practitioner for evaluation."},  
+
+{text: "input: my knee goes *click* when I walk"},  
+{text: "output: Persistent joint sounds may indicate cartilage wear. Avoid high-impact exercises and consult an orthopedic specialist for imaging or physical therapy recommendations."},  
+
+{text: "input: I’m coughing like a diesel engine"},  
+{text: "output: Prolonged coughing could signal bronchitis or allergies. Use a humidifier and avoid irritants like smoke. If symptoms continue, a pulmonologist can assess for underlying conditions."},  
+
+{text: "input: my anxiety is doing backflips"},  
+{text: "output: Chronic anxiety often benefits from therapy or mindfulness practices. Licensed psychologists specializing in cognitive behavioral therapy can provide structured coping strategies."},  
+
+{text: "input: my blood pressure is high"},  
+{text: "output: Reduce sodium intake, exercise regularly, and monitor BP daily. For personalized plans, cardiologists can coordinate lab work and medication adjustments as needed."},  
+
+{text: "input: I think I’m allergic to something"},  
+{text: "output: Track exposure to potential allergens and use antihistamines. Allergy testing with a specialist can identify triggers and guide long-term management."},  
+
+{text: "input: my hair’s falling out like autumn leaves"},  
+{text: "output: Hair loss may stem from stress, hormones, or nutrition. A dermatologist or trichologist can evaluate for conditions like alopecia and recommend treatments."},  
+
+{text: "input: I’m always tired"},  
+{text: "output: Fatigue can indicate anemia, thyroid issues, or sleep disorders. Blood tests (CBC, thyroid panel) are often the first step to identify causes."},  
+
+{text: "input: my period is kicking my butt"},  
+{text: "output: Severe cramps may require hormonal therapy or diagnostics for conditions like endometriosis. A gynecologist can discuss options like ultrasound or laparoscopy."},  
+
+{text: "input: I’m addicted to sugar"},  
+{text: "output: Gradually replace sugary snacks with fruits or nuts. A registered dietitian can help design meal plans to stabilize blood sugar and reduce cravings."},  
+
+{text: "input: my cholesterol is high"},  
+{text: "output: Focus on soluble fiber (oats, beans) and omega-3s. Regular cardio exercise and consultations with a cardiologist or nutritionist improve long-term outcomes."},  
+
+{text: "input: I’m scared of needles"},  
+{text: "output: Numbing creams or distraction techniques can ease anxiety. Clinicians trained in pediatric care often use gentler methods for patients of all ages."},  
+
+{text: "input: my phone hurts my neck"},  
+{text: "output: Text neck strains muscles. Adjust your screen to eye level and take hourly breaks. A physiotherapist can recommend exercises to improve posture."},  
+
+{text: "input: my armpit has a lump"},  
+{text: "output: Lumps require prompt evaluation. Schedule an urgent consultation with a GP or surgeon to rule out infections or growths."},  
+
+{text: "input: DocLink has specialists, right?"},  
+{text: "output: Yes! DocLink’s directory includes vetted specialists across fields like cardiology, dermatology, and mental health. Use filters to find clinicians by availability or expertise."},
         {text: `input: ${userInput}`},
         {text: "output: "},
       ];

@@ -3,6 +3,7 @@ const router = express.Router();
 import { handlerDoctorLogin, handlerDoctorSignup } from '../controllers/doctorController.js';
 import checkAuthDoctor from '../middlewares/checkAuthDoctor.js';
 import Doctor from '../models/doctorModel.js';
+import User from '../models/userModel.js'
 
 router.route('/login')
 .get((req,res)=>{
@@ -102,5 +103,28 @@ router.post('/remove-slot/:index', checkAuthDoctor, async (req,res)=>{
         return res.status(500).send("An error occurred while processing your request");
     }
 });
+
+router.get('/cancel-appointment/:userId/:date/:time', checkAuthDoctor, async (req,res)=>{
+    try {
+        const {userId, date, time} = req.params;
+        const doctorId = req.doctor._id;
+        const thatDoctor = await Doctor.findOne({_id: doctorId});
+        const thatUser = await User.findOne({_id : userId});
+
+        thatDoctor.bookedSlots = thatDoctor.bookedSlots.filter((slot)=>{return !(slot.date === date && slot.time === time)});
+        thatDoctor.openSlots.push({date: date, time: time});
+        
+        thatUser.bookedAppointments = thatUser.bookedAppointments.filter((appointment)=> !(appointment.date === date && appointment.time === time && appointment.doctorId === doctorId));
+
+        await thatDoctor.save();
+        await thatUser.save();
+        console.log('cancelled successfully');
+        res.redirect('/doctor/dashboard')
+
+    } catch (error) {
+        console.log(error);
+        
+    }
+})
 
 export default router;

@@ -85,7 +85,7 @@
                                     <p class="card-text">Date: <%= slot.date %>  |  Time: <%= slot.time %></p>
                                     <div class="d-flex justify-content-evenly">
                                         <a href="/user/profile/<%= slot.userId %>"><div class="btn btn-primary fs-7">Patient Info</div></a>
-                                        <div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="#cancelAppoint">Cancel</div>
+                                        <a href="/doctor/cancel-appointment/<%= slot.userId %>/<%= slot.date %>/<%= slot.time %>"><div class="btn btn-outline-danger fs-7" data-bs-toggle="modal" data-bs-target="">Cancel</div></a>
                                     </div>
                                 </div>
                             </div>

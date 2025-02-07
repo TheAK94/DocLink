@@ -48,6 +48,7 @@ const doctorSchema = new schema({
           date: String,
           time: String,
           user: String,
+          userId: String,
         }
       ],
     role:{
