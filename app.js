@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv'
 dotenv.config();
 import cookieParser from 'cookie-parser';
+import { Server } from 'socket.io'
 
 import run from './services/healthBot.js'
 import run2 from './services/symptomBot.js'
@@ -9,10 +10,19 @@ import userRoute from './routes/userRouter.js';
 import doctorRoute from './routes/doctorRoute.js';
 import connectDB from './controllers/configDB.js';
 connectDB();
-
-const app = express();
+import http from 'http';
 const PORT = process.env.port || 7000;
+const app = express();
+const server = http.createServer(app)
+const io = new Server(server);
 
+//socket.io
+io.on('connection', (socket) => {
+    socket.on('user-message', (message)=>{
+        
+        io.emit("message", message);
+    }) 
+})
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -58,10 +68,15 @@ app.get('/speciality', async (req, res) => {
 app.get('/symptomBot', async (req, res) => {
     res.render('symptomBot');
 });
+app.get('/chat', async (req, res) => {
+    // const userId = req.params.userId;
+    // const doctorId = req.params.doctorId;
+    res.render('chat');
+});
 app.use('/user',userRoute);
 app.use('/doctor',doctorRoute);
 
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
     console.log(`Server is running at http://localhost:${PORT}/`);
 })

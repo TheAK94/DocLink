@@ -24,6 +24,8 @@ async function handlerUserLogin(req, res) {
 
 async function handlerUserSignup(req, res) {
     const { firstName, lastName, email, password } = req.body;
+    // const profileImageUser = req.file.filename;
+
     console.log(firstName, lastName, email, password);
     try {
         const checkExistingUser = await User.findOne({email: email});
@@ -31,6 +33,7 @@ async function handlerUserSignup(req, res) {
             return res.status(401).send("User already exists, try new email");
         }
         const event = await User.create({
+
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -48,7 +51,7 @@ async function handlerUserSignup(req, res) {
 
         // mailing user 
         // sendEmail(
-        //     "ankitmuradpur@gmail.com",
+        //     `${email}, heyyynkit@gmail.com`,
         //     "You are Signed In",
         //     "Your are signed in bro!"
         //   );

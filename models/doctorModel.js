@@ -38,9 +38,9 @@ const doctorSchema = new schema({
         required: true,
         default: 0
     },
-    profilePicture: {
+    profileImage: {
         type: String,
-        default: ""
+        default: "default.webp"
     },
     openSlots:[
         {

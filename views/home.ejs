@@ -35,9 +35,9 @@
                     </div>
                     <div class="d-flex flex-column me-2">
                         <span class="text-dark small" id="emergency-label">Emergency</span>
-                        <button type="button" class="btn btn-outline-info btn-hover-nav">
+                        <a href="tel:+4733378901" type="button" class="btn btn-outline-info btn-hover-nav">
                             <i class="bi bi-telephone-fill pe-2"></i>104
-                        </button>
+                        </a>
                     </div>
                     <!-- Login Button -->
                     <button class="btn me-2 mtop-nav-fix login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
@@ -114,7 +114,7 @@
                         </div>
                         </form>
                         <!-- Register Form -->
-                        <form action="/user/signup" method="post" id="registerForm" class="auth-form" style="display: none;">
+                        <form action="/user/signup" method="post" id="registerForm" class="auth-form" style="display: none;"">
                         <!-- Hidden field to hold the selected role -->
                         <input type="hidden" id="roleInputRegister" name="role" value="">
                         <div class="mb-3">
@@ -133,6 +133,10 @@
                             <label for="regPassword" class="form-label">Password</label>
                             <input name="password" type="password" class="form-control" id="regPassword" required>
                         </div>
+                        <!-- <div class="form-group">
+                            <label for="profileImage">Upload Profile Image</label>
+                            <input type="file" name="profileImageUser" id="profileImageUser" class="form-control" preview="profileImagePreview">
+                        </div> -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Register</button>
                         </div>
@@ -191,10 +195,10 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                    <div class="card-body d-flex flex-column justify-content-center">
+                    <a style=" text-decoration: none;" href="https://www.google.com/maps/search/hospitals+near+me/@25.4934795,81.8061473,12z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDIwNS4wIKXMDSoASAFQAw%3D%3D" class="card-body d-flex flex-column justify-content-center">
                         <i class="bi bi-hospital fs-2"></i>
                         <p class="responsive-text mt-2">Find Hospital</p>
-                    </div>
+                    </a>
                     </div>
                 </div>
                 <div class="col">
@@ -205,20 +209,20 @@
                     </a>
                     </div>
                 </div>
-                <div class="col">
+                <!-- <div class="col">
                     <div class="card h-100">
                     <div class="card-body d-flex flex-column justify-content-center">
                         <i class="bi bi-laptop fs-2"></i>
                         <p class="responsive-text mt-2">Consult Online</p>
                     </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col">
                     <div class="card h-100">
-                    <div class="card-body d-flex flex-column justify-content-center">
+                        <a style=" text-decoration: none;" href="https://www.netmeds.com/prescriptions" class="card-body d-flex flex-column justify-content-center">
                         <i class="bi bi-capsule fs-2"></i>
                         <p class="responsive-text mt-2">Buy Medicine</p>
-                    </div>
+                        </a>
                     </div>
                 </div>
             </div>

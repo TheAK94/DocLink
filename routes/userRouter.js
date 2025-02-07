@@ -7,12 +7,12 @@ import { handlerUserLogin, handlerUserSignup } from '../controllers/userControll
 import checkAuth from '../middlewares/checkAuth.js';
 import User from '../models/userModel.js';
 import Doctor from '../models/doctorModel.js';
-
+// import  upload from '../middlewares/multer.js'
 router.route('/login')
 .post(handlerUserLogin);
 
 router.route('/signup')
-.post(handlerUserSignup);
+.post(handlerUserSignup); 
 
 
 router.route('/dashboard')

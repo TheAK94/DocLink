@@ -18,9 +18,9 @@ const userSchema = new schema({
         type: String,
         required: true
     },
-    profilePicture: {
+    profileImage: {
         type: String,
-        default: ""
+        default: "default.webp"
     },
     role:{
         type: String,

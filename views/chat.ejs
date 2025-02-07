@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="/styles/healthbot.css">
+
+</head>
+<body>
+
+    <div id="chat-body" class="chat-body">
+        <!-- Chat messages can go here -->
+        
+
+        <!-- <div class="user-msg-container d-flex justify-content-end">
+            <p class="Usermsg">Hello! Im User</p>
+        </div> -->
+        
+    </div>
+    <div class="chat-footer">
+        <!-- <input type="text" placeholder="Type your message..." id="chatInput" />
+        <button id="sendBtn"><i class="bi bi-send-fill fs-5"></i></button> -->
+        <input type="text" name="message" id="message" placeholder="enter message">
+    <button id="sendBtn">SEND</button>
+    </div>
+    
+    
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io();
+        const sendBtn = document.getElementById('sendBtn');
+        const messageInput = document.getElementById('message');
+
+        
+        socket.on("message", (message)=>{
+            const userInput = document.getElementById('message').value;
+
+            const chatBody = document.getElementById('chat-body')
+            const userMsgContainer = document.createElement("div");
+            userMsgContainer.classList.add("user-msg-container", "d-flex", "justify-content-end");
+            const userMsg = document.createElement("p");
+            userMsg.classList.add("Usermsg");
+            userMsg.innerText = message;
+            userMsgContainer.appendChild(userMsg);
+            chatBody.appendChild(userMsgContainer);
+            document.getElementById("message").value = "";
+
+                
+        })
+        function emit (){
+            const message = messageInput.value;
+            
+            console.log(message);
+            socket.emit("user-message", message)
+        }
+        const inputField = messageInput;
+        sendBtn.addEventListener('click', emit)
+        inputField.addEventListener('keydown', (e)=>{
+            if(e.key === 'Enter'){
+                e.preventDefault();
+                emit();
+            }
+        }
+        )
+        
+    </script>
+</body>
+</html>

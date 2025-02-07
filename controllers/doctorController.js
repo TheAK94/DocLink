@@ -1,5 +1,6 @@
 import Doctor from '../models/doctorModel.js';
 import jwt from "jsonwebtoken"
+import multer from 'multer';
 
 async function handlerDoctorLogin(req, res) {
     const { email, password } = req.body;
@@ -23,8 +24,13 @@ async function handlerDoctorLogin(req, res) {
 }
 
 async function handlerDoctorSignup(req, res) {
-    const { firstName, lastName, speciality,experience, email, password } = req.body;
-    console.log(firstName, lastName, speciality, experience, email, password);
+    const { firstName, lastName, speciality, experience, email, password } = req.body;
+    const profileImage = req.file.filename; 
+
+    // console.log(req.body);
+    // console.log(req.file);
+    // console.log(profileImage);
+
     
     try {
         const checkExistingDoctor = await Doctor.findOne({ email });
@@ -37,9 +43,24 @@ async function handlerDoctorSignup(req, res) {
             speciality: speciality,
             experience: experience,
             email: email,
-            password: password
+            profileImage: profileImage, // Save the image path in the doctor model
+            password: password,
+
         });
         console.log("created AN Doctor");
+        res.cookie('flag', 1, { 
+            maxAge: 2000, 
+          });
+        res.cookie('content', "Successfully Registered a doctor!",  { 
+            maxAge: 2000, 
+          });
+        
+        //   mailing doctor 
+        // sendEmail(
+        //     `${email}, heyyynkit@gmail.com`,
+        //     "You are Signed In",
+        //     "Your are signed in bro!"
+        //   );
         res.redirect('/Doctor/login');
     } catch (err) {
         console.log("ERROR CREATING AN Doctor", err);

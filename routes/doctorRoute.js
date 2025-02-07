@@ -5,6 +5,10 @@ import checkAuthDoctor from '../middlewares/checkAuthDoctor.js';
 import Doctor from '../models/doctorModel.js';
 import User from '../models/userModel.js'
 
+import  upload from '../middlewares/multer.js'
+import multer from 'multer';
+// const upload = multer({dest: "uploads/"})
+
 router.route('/login')
 .get((req,res)=>{
     res.render('../views/doctor/doctorLogin');
@@ -16,7 +20,7 @@ router.route('/signup')
 .get((req,res)=>{
     res.render('../views/doctor/doctorSignup');
 }) 
-.post(handlerDoctorSignup);
+.post(upload.single('profileImage'), handlerDoctorSignup);
 
 
 //profile routee
