@@ -1,0 +1,156 @@
+<style>
+.navbar {
+    min-height: 80px;
+    height: auto;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+}
+
+.sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign svg {
+    width: 17px;
+}
+
+.sign svg path {
+    fill: white;
+}
+
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+.Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+}
+
+.Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+.Btn:active {
+    transform: translate(2px ,2px);
+}
+
+.nav-btn:hover {
+    background-color: #A1E3F9;
+}
+
+.nav-btn:active {
+    background-color: #55b9db !important;
+    border: 1px solid #55b9db !important;
+}
+
+nav {
+    background: #f0f0f0;
+    padding: 10px;
+}
+nav button {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+</style>
+
+<!-- NAVBAR -->
+<nav class="navbar bg-body-tertiary mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-2" href="#">DocLink</a>
+
+        <div class="d-flex">
+            <div class="btn me-2 nav-btn" id="dashboardBtn"><i class="bi bi-house me-2"></i>Home</div>
+            <div class="btn me-2 nav-btn" id="profileBtn"><i class="bi bi-person me-2"></i>Profile</div>
+            <button class="Btn me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">           
+                <div class="sign">
+                    <svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg>
+                </div>
+                <div class="text">Logout</div>
+            </button>
+        </div> 
+    </div>
+</nav>
+<!-- NAVBAR ENDS HERE -->
+
+<!-- LOGOUT -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Logout</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a href="/user/logout"><button type="button" class="btn btn-outline-danger">Yes</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- LOGOUT ENDS HERE -->
+
+<script>
+    // Navbar buttons
+const dashboardBtn = document.getElementById('dashboardBtn');
+const profileBtn = document.getElementById('profileBtn');
+const dashboardSection = document.getElementById('dashboard');
+const profileSection = document.getElementById('profile');
+
+// Function to switch sections
+function showSection(sectionToShow) {
+  // Hide all sections
+  dashboardSection.classList.remove('active');
+  profileSection.classList.remove('active');
+  // Show the selected section
+  sectionToShow.classList.add('active');
+}
+
+// Event listeners for button clicks
+dashboardBtn.addEventListener('click', () => {
+  showSection(dashboardSection);
+});
+
+profileBtn.addEventListener('click', () => {
+  showSection(profileSection);
+});
+</script>
