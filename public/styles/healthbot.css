@@ -115,6 +115,7 @@
     padding: 10px;
     overflow-y: auto;
     flex: 1;
+    transition: all 2s ease-in-out;
 }
   
 .chat-footer {

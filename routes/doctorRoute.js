@@ -39,8 +39,12 @@ router.route('/profile/:id')
 router.route('/dashboard')
 .get(checkAuthDoctor, async (req,res)=>{
     const doctor = await Doctor.findOne({_id:req.doctor._id});
-    res.render('../views/doctor/doctorDashboard', {doctor: doctor});
+    const today = new Date();
+    const todayDate = today.toISOString().split('T')[0];
+    res.render('../views/doctor/doctorDashboard', {doctor: doctor, todayDate});
 })
+
+router.route('/add-slot')
 .post(checkAuthDoctor, async (req,res)=>{
     try{
         const {date, timeSlot} = req.body;
@@ -67,8 +71,8 @@ router.route('/dashboard')
         // console.log("current doc",currentDoctor);
         
         console.log("Time slot added successfully");
-        // return res.redirect('/doctor/dashboard');
-        res.render('../views/doctor/doctorDashboard', { doctor: currentDoctor });
+        return res.redirect('/doctor/dashboard');
+        // res.render('../views/doctor/doctorDashboard', { doctor: currentDoctor });
     }
     catch(error){
         console.log(error);

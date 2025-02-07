@@ -13,7 +13,12 @@ const doctorSchema = new schema({
     speciality: {
         type: String,
         required: false,
-        default: "None"
+        default: "General"
+    },
+    qualifications: {
+        type: String,
+        required: false,
+        default: "MBBS",
     },
     address:{
         type: String,
@@ -30,7 +35,7 @@ const doctorSchema = new schema({
     },
     experience: {
         type: Number,
-        required: false,
+        required: true,
         default: 0
     },
     profilePicture: {

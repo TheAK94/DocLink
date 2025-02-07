@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="/styles/doc_profile.css">
 </head>
 <body>
-    <h1>Name: <%= doctor.firstName %></h1>
-
     <!-- PROFILE SECTION -->
     <main class="container my-5 section" id="profile">
         <div class="row doctor-profile">
@@ -21,17 +19,17 @@
             </div>
             <div class="col-md-8">
                 <div class="doctor-details">
-                    <h1 class="mb-4" style="color: #0087ad;">Dr. John Smith</h1>
+                    <h1 class="mb-4" style="color: #0087ad;"><%= doctor.firstName %></h1>
                     <div class="row">
                         <div class="col-md-6">
-                            <p><strong>Speciality:</strong> <span id="speciality">Cardiology</span></p>
-                            <p><strong>Experience:</strong> <span id="experience">15 Years</span></p>
-                            <p><strong>Qualifications:</strong> <span id="qualifications">MBBS, MD</span></p>
+                            <p><strong>Speciality:</strong> <span id="speciality"><%= doctor.speciality %></span></p>
+                            <p><strong>Experience:</strong> <span id="experience"><%= doctor.experience %></span></p>
+                            <p><strong>Qualifications:</strong> <span id="qualifications"><%= doctor.qualifications %>/span></p>
                         </div>
                         <div class="col-md-6">
-                            <p><strong>Languages:</strong> <span id="languages">English, Hindi</span></p>
-                            <p><strong>Location:</strong> <span id="location">Wellness City Hospital</span></p>
-                            <p><strong>Availability:</strong> <span id="availability">Mon - Sat</span></p>
+                            <!-- <p><strong>Languages:</strong> <span id="languages">English, Hindi</span></p> -->
+                            <p><strong>Location:</strong> <span id="location"><%= doctor.address %></span></p>
+                            <!-- <p><strong>Availability:</strong> <span id="availability">Mon - Sat</span></p> -->
                         </div>
                     </div>
                 </div>
