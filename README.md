@@ -70,21 +70,21 @@
    ```
 
 4. **Initialize npm (if necessary):**  
-   If the package.json file is missing, initialize npm:
+   If the `package.json` file is missing, initialize npm:
 
    ```bash
    npm init
    ```
 
 5. **Install Dependencies:**  
-   Install the required dependencies as specified in package.json:ne:
+   Install the required dependencies as specified in `package.json`:
 
    ```bash
    npm i
    ```
 
 6. **env File:**  
-   Create a .env file in the root directory to store your API keys and environment variables. For example:
+   Create a `.env` file in the root directory to store your API keys and environment variables. For example:
 
    ```bash
    SENDGRID_API_KEY=your_api_key_here
@@ -202,7 +202,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-| [<img src="https://avatars.githubusercontent.com/u/TheAK94?v=4" width="100px;"/><br /><sub><b>Atharva</b></sub>](https://github.com/TheAK94) | [<img src="https://avatars.githubusercontent.com/u/ankit-3131?v=4" width="100px;"/><br /><sub><b>Ankit</b></sub>](https://github.com/ankit-3131) | [<img src="https://avatars.githubusercontent.com/u/Sachit0CS?v=4" width="100px;"/><br /><sub><b>Sachit</b></sub>](https://github.com/Sachit0CS) | 
+| [<img src="https://github.com/TheAK94.png" width="100px;"/><br /><sub><b>Atharva</b></sub>](https://github.com/TheAK94) | [<img src="https://github.com/ankit-3131.png" width="100px;"/><br /><sub><b>Ankit</b></sub>](https://github.com/ankit-3131) | [<img src="https://github.com/Sachit0CS.png" width="100px;"/><br /><sub><b>Sachit</b></sub>](https://github.com/Sachit0CS) |
 | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
