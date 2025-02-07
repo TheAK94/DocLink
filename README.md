@@ -106,6 +106,7 @@
 
 ## Project Structure
 
+```
 |-- undefined
     |-- .env
     |-- .gitignore
@@ -176,6 +177,7 @@
             |-- navbar-doc.ejs
             |-- navbar-user.ejs
             |-- pushMessage.ejs
+```
 
 
 ## Customization
@@ -192,4 +194,15 @@ Contributions are welcome! Please fork this repository, make your changes, and s
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+![MIT License](https://img.shields.io/badge/License-MIT-green.svg)
+
+## Contact
+
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+| [<img src="https://avatars.githubusercontent.com/u/TheAK94?v=4" width="100px;"/><br /><sub><b>Atharva</b></sub>](https://github.com/TheAK94) | [<img src="https://avatars.githubusercontent.com/u/ankit-3131?v=4" width="100px;"/><br /><sub><b>Ankit</b></sub>](https://github.com/ankit-3131) | [<img src="https://avatars.githubusercontent.com/u/Sachit0CS?v=4" width="100px;"/><br /><sub><b>Sachit</b></sub>](https://github.com/Sachit0CS) | 
+| :---: | :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
