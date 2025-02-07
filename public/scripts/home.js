@@ -76,3 +76,9 @@ chatClose.addEventListener('click', () => {
   chatPopup.style.display = 'none';
   chatOpen.classList.remove('hidden');
 });
+
+document.getElementById('openChatBtn').addEventListener('click', function () {
+  const chatPopup = document.getElementById('chatPopup');
+  
+  chatPopup.style.display = 'flex';
+});
