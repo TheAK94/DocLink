@@ -7,10 +7,10 @@ async function handlerUserLogin(req, res) {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email: email });
-        if (!user) return res.render('signin', { message: 'Invalid email' });
+        if (!user) return res.render('home', { message: 'Invalid email' });
 
     const isValid = await bcrypt.compare(password, user.password);
-    if (!isValid) return res.render('signin', { message: 'Invalid password' });
+    if (!isValid) return res.render('home', { message: 'Invalid password' });
 
     const userIsThere = await User.findOne({ email });
     if (!userIsThere) {

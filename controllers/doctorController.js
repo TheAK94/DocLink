@@ -8,10 +8,10 @@ async function handlerDoctorLogin(req, res) {
     const { email, password } = req.body;
 
     const doctor = await Doctor.findOne({ email: email });
-        if (!doctor) return res.render('signin', { message: 'Invalid email' });
+        if (!doctor) return res.render('/doctor/login', { message: 'Invalid email' });
 
     const isValid = await bcrypt.compare(password, doctor.password);
-    if (!isValid) return res.render('signin', { message: 'Invalid password' });
+    if (!isValid) return res.render('/doctor/login', { message: 'Invalid password' });
 
 
     const doctorIsThere = await Doctor.findOne({ email});
