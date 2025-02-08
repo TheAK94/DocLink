@@ -176,7 +176,7 @@
 
         <!-- NAV LINKS -->
         <div class="container text-center mb-3">
-            <div class="row row-cols-3 row-cols-lg-6 g-2 g-lg-2 g-xl-2" id="goTo">
+            <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-2 g-xl-2" id="goTo">
                 <div class="col">
                     <div class="card h-100">
                     <a style=" text-decoration: none;" href="/user/bookAppointments"  class="card-body d-flex flex-column justify-content-center">
@@ -204,7 +204,7 @@
                 <div class="col">
                     <div class="card h-100">
                     <a  style=" text-decoration: none;" href="/symptomBot" class="card-body d-flex flex-column justify-content-center">
-                        <i class="bi bi-clipboard-plus fs-2"></i>
+                        <i class="bi bi-laptop fs-2"></i>
                         <p class="responsive-text mt-2">Symptom Cheker Bot</p>
                     </a>
                     </div>
@@ -278,8 +278,32 @@
 
         <%- include('./partials/pushMessage.ejs') %>
         <!-- FOOTER SECTION -->
-        <footer style="height: 500px; width: 100%; border: 5px solid black;">
-        
+        <!-- FOOTER SECTION -->
+        <footer class="footer-section bg-light py-5 mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>About Us</h5>
+                        <p>DocLink is a platform that connects patients with doctors, providing seamless healthcare services.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-geo-alt"></i> 123 Health St, Wellness City</li>
+                            <li><i class="bi bi-telephone"></i> +123 456 7890</li>
+                            <li><i class="bi bi-envelope"></i> info@doclink.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

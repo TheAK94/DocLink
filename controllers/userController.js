@@ -58,12 +58,11 @@ async function handlerUserSignup(req, res) {
 
 
         // mailing user 
-        // sendEmail(
-        //     `${email}, heyyynkit@gmail.com`,
-        //     "You are Signed In",
-        //     "Your are signed in bro!"
-        //   );
-
+        sendEmail(
+            `${email}, heyyynkit@gmail.com`,
+            "You are Signed In",
+            `You have successfully registered your account on ${new Date().toLocaleString()}.`
+          );
         res.redirect('/');
     } catch (err) {
         console.log("ERROR CREATING AN USER", err);

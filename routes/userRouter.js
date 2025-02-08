@@ -97,12 +97,12 @@ router.get('/book-slot/:doctor/:date/:time', checkAuth, async (req,res)=>{
         await thatDoctor.save();
         console.log("Slot booked, saved to doctor's booked slots");
 
-        //mailing the user
-        // sendEmail(
-        //     `${thisUser.email}, heyyynkit@gmail.com`,
-        //     "Your Appointment is Confirmed",
-        //     `Booked your appointment on "${date}" at "${time}" with "${thatDoctor.firstName}". Please be a good patient and try to be on time.`
-        //   );
+        // mailing the user
+        sendEmail(
+            `${thisUser.email}, heyyynkit@gmail.com`,
+            "Your Appointment is Confirmed",
+            `Booked your appointment on "${date}" at "${time}" with "${thatDoctor.firstName}". Please be a good patient and try to be on time.`
+          );
 
         //setting push message
         res.cookie('flag', 1, { 

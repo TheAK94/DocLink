@@ -1,6 +1,7 @@
 import Doctor from '../models/doctorModel.js';
 import jwt from "jsonwebtoken"
 import multer from 'multer';
+import { sendEmail } from '../services/sendMail.js';
 import bcrypt from 'bcrypt';
 
 async function handlerDoctorLogin(req, res) {
@@ -65,11 +66,11 @@ async function handlerDoctorSignup(req, res) {
           });
         
         //   mailing doctor 
-        // sendEmail(
-        //     `${email}, heyyynkit@gmail.com`,
-        //     "You are Signed In",
-        //     "Your are signed in bro!"
-        //   );
+        sendEmail(
+            `${email}, heyyynkit@gmail.com`,
+            "You are Signed In",
+            `You have successfully registered your account on ${new Date().toLocaleString()}.`
+          );
         res.redirect('/Doctor/login');
     } catch (err) {
         console.log("ERROR CREATING AN Doctor", err);
