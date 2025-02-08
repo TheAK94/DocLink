@@ -466,15 +466,15 @@
 
 .chatbot-sec-img {
     max-width: 100%;
-    height: 400px; 
-    width: 400px;
+    height: 400px !important; 
+    width: 400px !important;
     display: block;
     margin: 0 auto;
 }
 
 @media (max-width: 767px) {
-    .chatbot-img {
-      min-width: 200px;
-      height: auto;
+    .chatbot-sec-img {
+      min-width: 200px !important;
+      height: auto !important;
     }
 }
